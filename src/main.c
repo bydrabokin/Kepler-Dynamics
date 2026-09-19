@@ -92,6 +92,7 @@ int main() {
     SetTargetFPS(targetFps);
 
     InitWindow(1800, 900, "Kepler Dynamics 🪐");
+    Model voyager = LoadModel("../assets/spacecraft/Juno.glb");
     
     Camera3D pov = {0};
     
@@ -110,9 +111,9 @@ int main() {
 
         BeginMode3D(pov);   
 
-        DrawCubeWires((Vector3){0, 0, 0}, 2, 2, 2, RED);
-        DrawSphere((Vector3){0, 2, 0}, 1, BLUE);
-        
+        //DrawSphere((Vector3){0, 2, 0}, 1, BLUE);
+        DrawModel(voyager, (Vector3){0, 0, 0}, 1.0f, RAYWHITE);
+
         EndMode3D();
 
         EndDrawing();
