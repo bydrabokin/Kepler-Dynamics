@@ -87,6 +87,7 @@ void cameraLogic(Camera3D *camera) {
 int main() {
     
     //FPS
+    //system("python3 DATA/getData.py");
     targetFps = 100;
     SetTargetFPS(targetFps);
 
@@ -97,8 +98,6 @@ int main() {
     //set
     setInitialMiscellanious();
     setIntialCamera(&pov);
-
-    system("python3 getData.py");
 
 
     while (!WindowShouldClose()) {
