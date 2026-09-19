@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
+#include <stdlib.h>
 
 #define SCREEN_HALF_X 900
 #define SCREEN_HALF_Y 450
@@ -97,6 +98,8 @@ int main() {
     setInitialMiscellanious();
     setIntialCamera(&pov);
 
+    system("python3 getData.py");
+
 
     while (!WindowShouldClose()) {
         
@@ -106,7 +109,7 @@ int main() {
         BeginDrawing();
         ClearBackground(BLACK);
 
-        BeginMode3D(pov);
+        BeginMode3D(pov);   
 
         DrawCubeWires((Vector3){0, 0, 0}, 2, 2, 2, RED);
         DrawSphere((Vector3){0, 2, 0}, 1, BLUE);
