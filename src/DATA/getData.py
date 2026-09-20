@@ -1,6 +1,12 @@
+"""
+    API: "https://ssd-api.jpl.nasa.gov/doc/horizons.html"
+"""
+
+
 import requests
 from datetime import datetime, timezone, timedelta
 import math
+import json
 
 def name(planet, response):
     if planet[-1] == ";":
@@ -28,19 +34,24 @@ def centerBody(planet, response):
     if response.text[centerBodyStart:centerBodyEnd].count("/") == 0:
         centerBody = "Sun"
     if planet == "10":
-        centerBody = "N/A"
+        centerBody = ""
     if centerBody.count("(") > 0:
         centerBody = centerBody[1:]
 
     return centerBody
 
 def mass(response):
-    massStart = response.text.find("Mass") + 4
+    text = response.text.lower()
+    if planet == "999":
+        massStart = text.find("mass x") 
+    else:
+        massStart = text.find("mass") +4
+
     mass = response.text[massStart:].strip()
 
     massExponentStart = mass.find("^")+1
     massExponent = mass[massExponentStart:massExponentStart+2]
-
+    
     mass = mass[mass.find("=")+2:].strip()
 
     if mass.count("+") > 0: 
@@ -55,14 +66,15 @@ def mass(response):
 
     mass = mass + "e" + massExponent
 
-    if response.text.count("Mass") == 0:
-        mass = "N/A"
+    if text.count("mass") == 0:
+        return None
 
     try:
         float(mass)
     except ValueError:
-        mass = "N/A" 
-    return mass
+        return None 
+    
+    return float(mass)
 
 def radius(planet, response):
     radius = response.text.lower()
@@ -84,12 +96,13 @@ def radius(planet, response):
         radius1 = float(radiusSplitted[0].strip())
         radius2 = float(radiusSplitted[1].strip())
         radius3 = float(radiusSplitted[2].strip())
-        meanRadius = math.cbrt(radius1*radius2*radius3)
-        radius = f"{meanRadius}"
+        radius = f"{radius1*1000}, {radius2*1000}, {radius3*1000}"
+        return radius
+
     if response.text.lower().count("radius") == 0:
-        return "N/A"
+        return None
     
-    radius = f"{float(radius)*1000}"
+    radius = f"{float(radius)*1000}, {float(radius)*1000}, {float(radius)*1000}"
 
     return radius
 
@@ -131,16 +144,16 @@ def axialTilt(response):
     tilt = tilt[:tiltEnd].strip()
 
     if response.text.count("Obliquity to orbit") == 0:
-        tilt = "N/A"
+        return None
 
-    return tilt
+    return float(tilt)
 
 def bondAlbedo(response):
     text = response.text.lower()
     albedoStart = text.find("geometric albedo")
 
     if (text.count("geometric albedo") == 0):
-        return "N/A"
+        return None
     
     albedo = response.text[albedoStart:]
     albedoStart = albedo.find("=")+1
@@ -155,20 +168,19 @@ def bondAlbedo(response):
 
     text = response.text.lower()
     if text.count("geometric albedo") == 0:
-        albedo = "N/A"
+        return None
 
     if not albedo:
-
-        return "N/A"
+        return None
     
-    return albedo
+    return float(albedo)
 
 def meanSolarDay(response):
     factor = 1
     solarStart = response.text.find("Mean solar day")
 
     if (response.text.count("Mean solar day") == 0):
-        return "N/A"
+        return None
     
     solar = response.text[solarStart:solarStart+100]
 
@@ -195,13 +207,13 @@ def meanSolarDay(response):
 
     solar = f"{float(solar)*factor}"
 
-    return solar
+    return float(solar)
 
 def temp(response):
 
     text = response.text.lower()
     if (text.count("temp") == 0):
-            return "N/A"
+        return None
 
     tempStart = text.find("temp")
     temp = response.text[tempStart:]
@@ -214,13 +226,13 @@ def temp(response):
     tempEnd = i
     temp = temp[:tempEnd].strip()
 
-    return temp
+    return float(temp)
 
 def pressure(response):
 
     text = response.text.lower()
     if (text.count("pressure") == 0):
-            return "N/A"
+        return None
 
     pressureStart = text.find("pressure")
     pressure = response.text[pressureStart:]
@@ -238,12 +250,17 @@ def pressure(response):
 
     pressure = f"{float(pressure)*100000}"
     
-    return pressure
+    return float(pressure)
 
 now = datetime.now(timezone.utc)
 
 with open("data.txt", "w") as f:
     f.write(f"{now}")
+
+with open("data.json", "w") as f:
+    f.write(f"")
+
+time = datetime.now(timezone.utc).isoformat()
 
 
 url = "https://ssd.jpl.nasa.gov/api/horizons.api"
@@ -266,13 +283,13 @@ listPlanets = [
 ]
 
 dwarfPlanets = [
-    "1;", # Ceres
-    "2;", # Pallas
-    "3;", # Juno
-    "4;", # Vesta
-    "136199;", # Eris
-    "136108;", # Haumea
-    "136472;"  # Makemake
+    ["1;", 9.384e20, [469700, 469700, 469700]],         # Ceres
+    ["2;", 2.04e20, [582000, 556000, 500000]],          # Pallas
+    ["3;", 2.27e19, [290000, 240,000, 190000]],         # Juno
+    ["4;", 2.591e20, [572600, 557200, 446400]],         # Vesta
+    ["136199;", 1.647e22, [1200000, 1200000, 1200000]], # Eris
+    ["136108;", 4.006e21, [2320000, 1700000, 1138000]], # Haumea
+    ["136472;", 3.1e21, [715000, 715000, 715000]],      # Makemake
 ]
 
 listMoons = [
@@ -287,15 +304,15 @@ listMoons = [
 ]
 
 listSpacecraft = [
-    "-31", # Voyager 1 Spacecraft (interplanetary)
-    "-32", # Voyager 2 Spacecraft (interplanetary)
-    "-98", # New Horizons Spacecraft
-    "-61", # Juno Spacecraft
-    "-23", # Pioneer 10 Spacecraft (interplanetary)
-    "-24", # Pioneer 11 Spacecraft
-    "-96", # Parker Solar Probe
-    "-64", # OSIRIS-REx
-    "-203" # Dawn Spacecraft (interplanetary)
+    ["-31", 735, [13, 10, 3.8]],          # Voyager 1 Spacecraft (interplanetary)
+    ["-32", 735, [13, 10, 3.8]],          # Voyager 2 Spacecraft (interplanetary)
+    ["-98", 478, [2.7, 2.2, 2.2]],        # New Horizons Spacecraft
+    ["-61", 1593, [18, 3.5, 3.5]],        # Juno Spacecraft
+    ["-23", 258, [13.2, 6, 2.9]],         # Pioneer 10 Spacecraft (interplanetary)
+    ["-24", 258.5, [13.2, 6, 2.9] ],      # Pioneer 11 Spacecraft
+    ["-96", 633, [3.0, 2.3, 2.3]],        # Parker Solar Probe
+    ["-64", 1215, [6.2, 2.43, 3.15]],     # OSIRIS-REx
+    ["-203", 747.1, [19.7, 1.27, 1.77]],  # Dawn Spacecraft (interplanetary)
 
 ]
 
@@ -320,6 +337,9 @@ params = {
     "STEP_SIZE": "'1 m'",
 }
 
+
+all_data = {}
+
 print(f"\nDate: {now}")
 
 print("\nFetching planet data from NASA...")
@@ -341,16 +361,68 @@ for planetSelected in listPlanets:
         f.write("Name: " + name(planet, response) + "\n")
         print(name(planet, response))
         f.write("Center Body: " + centerBody(planet, response) + "\n")
-        f.write("Mass: " + mass(response) + "\n")
-        f.write("Radius: " + radius(planet, response) + "\n")
-        f.write("Axial Tilt: " + axialTilt(response) + "\n")
-        f.write("Bond albedo: " + bondAlbedo(response) + "\n")
-        f.write("Mean Solar Day: " + meanSolarDay(response) + "\n")
-        f.write("Mean Temperature: " + temp(response) + "\n")
-        f.write("Atmospheric Pressure: " + pressure(response) + "\n")
+        f.write(f"Mass: {mass(response)} kg\n")
+        f.write("Radius: " + radius(planet, response) + " (m)\n")
+        f.write(f"Axial Tilt: {axialTilt(response)} deg\n")
+        f.write(f"Bond albedo: {bondAlbedo(response)}\n")
+        f.write(f"Mean Solar Day: {meanSolarDay(response)} s\n")
+        f.write(f"Mean Temperature: {temp(response)} K\n")
+        f.write(f"Atmospheric Pressure: {pressure(response)} Pa\n")
 
         X, Y, Z, VX, VY, VZ = posAndVel(response)
-        f.write(f"X:  {X}\nY:  {Y}\nZ:  {Z}\nVX: {VX}\nVY: {VY}\nVZ: {VZ}\n")
+
+        X = float(X)
+        Y = float(Y)
+        Z = float(Z)
+        VX = float(VX)
+        VY = float(VY)
+        VZ = float(VZ)
+        
+        f.write(f"X:  {X} m\nY:  {Y} m\nZ:  {Z} m\nVX: {VX} ms\nVY: {VY} ms\nVZ: {VZ} ms\n")
+
+    r = radius(planet, response)
+    radiusX = float(r.split(",")[0].strip())
+    radiusY = float(r.split(",")[1].strip())
+    radiusZ = float(r.split(",")[2].strip())
+
+    all_data[planet] = {
+        "name": name(planet, response),
+        "type":"planet",
+
+        "physical": {
+            "mass_kg": mass(response),
+            "radius_m": {
+                "x":radiusX,
+                "y":radiusY,
+                "z":radiusZ
+            },
+            "axial_tilt_deg": axialTilt(response),
+            "bond_albedo": bondAlbedo(response),
+            "mean_solar_day_s":meanSolarDay(response),
+            "mean_temperature_K":temp(response),
+            "surface_pressure_bar":pressure(response),
+            "orbiting":centerBody(planet, response)
+        },
+
+        "state": {
+            "epoch":time,
+            "reference_frame":"ecliptic",
+
+            "position_m": {
+                "x": X,
+                "y": Y,
+                "z": Z
+            },
+
+            "velocity_ms": {
+                "x": VX,
+                "y": VY,
+                "z": VZ
+            }
+        }
+    }
+
+
 
 print("\nFetching dwarf planet/minor bodies data from NASA...")
 
@@ -359,8 +431,8 @@ with open("data.txt", "a") as f:
 
 for dwarfSelected in dwarfPlanets:
 
-    params["COMMAND"] = dwarfSelected
-    planet = dwarfSelected
+    params["COMMAND"] = dwarfSelected[0]
+    planet = dwarfSelected[0]
 
     response = requests.post(url, data=params)
     #print(response.text)
@@ -370,10 +442,52 @@ for dwarfSelected in dwarfPlanets:
         f.write("Code: " + planet + "\n")
         f.write("Name: " + name(planet, response) + "\n")
         print(name(planet, response))
+        f.write(f"Mass: {dwarfSelected[1]} kg\n")
+        f.write(f"Dimensions: {dwarfSelected[2][0]} m, {dwarfSelected[2][1]} m, {dwarfSelected[2][2]} m\n")
         f.write("Center Body: " + centerBody(planet, response) + "\n")
 
         X, Y, Z, VX, VY, VZ = posAndVel(response)
-        f.write(f"X:  {X}\nY:  {Y}\nZ:  {Z}\nVX: {VX}\nVY: {VY}\nVZ: {VZ}\n")
+
+        X = float(X)
+        Y = float(Y)
+        Z = float(Z)
+        VX = float(VX)
+        VY = float(VY)
+        VZ = float(VZ)
+        
+        f.write(f"X:  {X} m\nY:  {Y} m\nZ:  {Z} m\nVX: {VX} ms\nVY: {VY} ms\nVZ: {VZ} ms\n")
+
+    all_data[planet] = {
+        "name": name(planet, response),
+        "type":"minorBody",
+
+        "physical": {
+            "mass_kg": dwarfSelected[1],
+            "dimensions_m": {
+                "x":dwarfSelected[2][0],
+                "y":dwarfSelected[2][1],
+                "z":dwarfSelected[2][2]
+            },
+            "orbiting":centerBody(planet, response)
+        },
+
+        "state": {
+            "epoch":time,
+            "reference_frame":"ecliptic",
+
+            "position_m": {
+                "x": X,
+                "y": Y,
+                "z": Z
+            },
+
+            "velocity_ms": {
+                "x": VX,
+                "y": VY,
+                "z": VZ
+            }
+        }
+    }
 
 print("\nFetching moon data from NASA...")
 
@@ -394,22 +508,66 @@ for moonSelected in listMoons:
         f.write("Name: " + name(planet, response) + "\n")
         print(name(planet, response))
         f.write("Center Body: " + centerBody(planet, response) + "\n")
-        f.write("Mass: " + mass(response) + "\n")
-        f.write("Radius: " + radius(planet, response) + "\n")
-        f.write("Mean Solar Day: " + meanSolarDay(response) + "\n")
-        f.write("Atmospheric Pressure: " + pressure(response) + "\n")
-
+        f.write(f"Mass: {mass(response)} kg\n")
+        f.write("Radius: " + radius(planet, response) + " (m)\n")
+        f.write(f"Mean Solar Day: {meanSolarDay(response)} s\n")
         X, Y, Z, VX, VY, VZ = posAndVel(response)
-        f.write(f"X:  {X}\nY:  {Y}\nZ:  {Z}\nVX: {VX}\nVY: {VY}\nVZ: {VZ}\n")
 
+        X = float(X)
+        Y = float(Y)
+        Z = float(Z)
+        VX = float(VX)
+        VY = float(VY)
+        VZ = float(VZ)
+
+        f.write(f"X:  {X} m\nY:  {Y} m\nZ:  {Z} m\nVX: {VX} ms\nVY: {VY} ms\nVZ: {VZ} ms\n")
+
+    r = radius(planet, response)
+    radiusX = float(r.split(",")[0].strip())
+    radiusY = float(r.split(",")[1].strip())
+    radiusZ = float(r.split(",")[2].strip())
+
+    all_data[planet] = {
+        "name": name(planet, response),
+        "type":"moon",
+
+        "physical": {
+            "mass_kg": mass(response),
+            "radius_m": {
+                "x":radiusX,
+                "y":radiusY,
+                "z":radiusZ
+            },
+            "mean_solar_day_s":meanSolarDay(response),
+            "orbiting":centerBody(planet, response)
+        },
+
+        "state": {
+            "epoch":time,
+            "reference_frame":"ecliptic",
+
+            "position_m": {
+                "x": X,
+                "y": Y,
+                "z": Z
+            },
+
+            "velocity_ms": {
+                "x": VX,
+                "y": VY,
+                "z": VZ
+            }
+        }
+    }
+    
 print("\nFetching spacecraft data from NASA...")
 
 with open("data.txt", "a") as f:
     f.write("\n\nSPACECRAFTS")
 
 for spacecraftSelected in listSpacecraft:
-    params["COMMAND"] = spacecraftSelected
-    planet = spacecraftSelected
+    params["COMMAND"] = spacecraftSelected[0]
+    planet = spacecraftSelected[0]
 
     response = requests.post(url, data=params)
     #print(response.text)
@@ -419,9 +577,52 @@ for spacecraftSelected in listSpacecraft:
         f.write("Code: " + planet + "\n")
         f.write("Name: " + name(planet, response) + "\n")
         print(name(planet, response))
+        f.write(f"Mass: {spacecraftSelected[1]} kg\n")
+        f.write(f"Dimensions: {spacecraftSelected[2][0]} m, {spacecraftSelected[2][1]} m, {spacecraftSelected[2][2]} m\n")
         f.write("Center Body: " + centerBody(planet, response) + "\n")
 
         X, Y, Z, VX, VY, VZ = posAndVel(response)
-        f.write(f"X:  {X}\nY:  {Y}\nZ:  {Z}\nVX: {VX}\nVY: {VY}\nVZ: {VZ}\n")
 
-print("\n")
+        X = float(X)
+        Y = float(Y)
+        Z = float(Z)
+        VX = float(VX)
+        VY = float(VY)
+        VZ = float(VZ)
+
+        f.write(f"X:  {X} m\nY:  {Y} m\nZ:  {Z} m\nVX: {VX} ms\nVY: {VY} ms\nVZ: {VZ} ms\n")
+
+    all_data[planet] = {
+        "name": name(planet, response),
+        "type":"spacecraft",
+
+        "physical": {
+            "mass_kg": spacecraftSelected[1],
+            "dimensions_m": {
+                "x":spacecraftSelected[2][0],
+                "y":spacecraftSelected[2][1],
+                "z":spacecraftSelected[2][2]
+            },
+            "orbiting":centerBody(planet, response)
+        },
+
+        "state": {
+            "epoch":time,
+            "reference_frame":"ecliptic",
+
+            "position_m": {
+                "x": X,
+                "y": Y,
+                "z": Z
+            },
+
+            "velocity_ms": {
+                "x": VX,
+                "y": VY,
+                "z": VZ
+            }
+        }
+    }
+
+with open("data.json", "w") as f:
+    json.dump(all_data, f, indent=4)
