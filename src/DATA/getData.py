@@ -313,6 +313,14 @@ listSpacecraft = [
     ["-96", 633, [3.0, 2.3, 2.3]],        # Parker Solar Probe
     ["-64", 1215, [6.2, 2.43, 3.15]],     # OSIRIS-REx
     ["-203", 747.1, [19.7, 1.27, 1.77]],  # Dawn Spacecraft (interplanetary)
+    ["-159", 5800, [30.5, 17.6, 8.5]], # Europa Clipper Spacecraft 
+    ["-28",  6070, [16.8, 27.1, 13.7]], # JUICE Spacecraft          
+    ["-144", 1800, [18.0, 3.1, 2.7]], # Solar Orbiter Spacecraft  
+    ["-49",  1500, [15.82, 7.28, 2.00]], # Lucy Spacecraft           
+    ["-255", 2747, [24.76, 7.34, 4.9]], # Psyche Spacecraft         
+    ["-121", 4100, [30.0, 6.3, 3.9]], # BepiColombo Spacecraft    
+    ["-37",   609, [1.6, 1.3, 1.0]] # Hayabusa2 Spacecraft      
+
 
 ]
 
@@ -400,7 +408,7 @@ for planetSelected in listPlanets:
             "bond_albedo": bondAlbedo(response),
             "mean_solar_day_s":meanSolarDay(response),
             "mean_temperature_K":temp(response),
-            "surface_pressure_bar":pressure(response),
+            "surface_pressure_Pa":pressure(response),
             "orbiting":centerBody(planet, response)
         },
 
@@ -626,3 +634,5 @@ for spacecraftSelected in listSpacecraft:
 
 with open("data.json", "w") as f:
     json.dump(all_data, f, indent=4)
+
+print("\n")
