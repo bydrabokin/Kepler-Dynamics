@@ -1,6 +1,6 @@
 #!/bin/bash
 
-gcc "$1" -o main -lraylib -lm -lX11
+gcc "$1" -o main -lraylib -lm -lX11 -lcjson
 
 if [ $? -eq 0 ]; then
     ./main
