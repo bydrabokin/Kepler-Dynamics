@@ -1,0 +1,1727 @@
+{
+    "10": {
+        "name": "Sun",
+        "type": "planet",
+        "physical": {
+            "mass_kg": 1.98841e+30,
+            "radius_m": {
+                "x": 695700000.0,
+                "y": 695700000.0,
+                "z": 695700000.0
+            },
+            "axial_tilt_deg": null,
+            "bond_albedo": null,
+            "mean_solar_day_s": null,
+            "mean_temperature_K": 6600.0,
+            "surface_pressure_Pa": null,
+            "orbiting": ""
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "velocity_ms": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            }
+        }
+    },
+    "199": {
+        "name": "Mercury",
+        "type": "planet",
+        "physical": {
+            "mass_kg": 3.302e+23,
+            "radius_m": {
+                "x": 2439400.0,
+                "y": 2439400.0,
+                "z": 2439400.0
+            },
+            "axial_tilt_deg": 2.11,
+            "bond_albedo": 0.106,
+            "mean_solar_day_s": 15201397.440000001,
+            "mean_temperature_K": 440.0,
+            "surface_pressure_Pa": 500000.0,
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": -13143631158.80419,
+                "y": -68419227134.12139,
+                "z": -4386012387.9951315
+            },
+            "velocity_ms": {
+                "x": 38063.95927057232,
+                "y": -6727.916380435433,
+                "z": -4040.924725753479
+            }
+        }
+    },
+    "299": {
+        "name": "Venus",
+        "type": "planet",
+        "physical": {
+            "mass_kg": 4.8685e+24,
+            "radius_m": {
+                "x": 6051840.0,
+                "y": 6051840.0,
+                "z": 6051840.0
+            },
+            "axial_tilt_deg": 177.3,
+            "bond_albedo": 0.65,
+            "mean_solar_day_s": 10087113.6,
+            "mean_temperature_K": 735.0,
+            "surface_pressure_Pa": 9000000.0,
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 106519469466.5739,
+                "y": -21157116215.06472,
+                "z": -6436696542.146723
+            },
+            "velocity_ms": {
+                "x": 6650.12751758041,
+                "y": 34192.224630389515,
+                "z": 86.09062574872617
+            }
+        }
+    },
+    "399": {
+        "name": "Earth",
+        "type": "planet",
+        "physical": {
+            "mass_kg": 5.9721e+24,
+            "radius_m": {
+                "x": 6371010.0,
+                "y": 6371010.0,
+                "z": 6371010.0
+            },
+            "axial_tilt_deg": 23.4392911,
+            "bond_albedo": 0.367,
+            "mean_solar_day_s": 86400.002,
+            "mean_temperature_K": 287.6,
+            "surface_pressure_Pa": 100000.0,
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 149448165087.1225,
+                "y": 11894551097.84631,
+                "z": -1952441.772196442
+            },
+            "velocity_ms": {
+                "x": -2841.727722568236,
+                "y": 29571.28509666917,
+                "z": -2.447680674785957
+            }
+        }
+    },
+    "499": {
+        "name": "Mars",
+        "type": "planet",
+        "physical": {
+            "mass_kg": 6.4171e+23,
+            "radius_m": {
+                "x": 3389920.0,
+                "y": 3389920.0,
+                "z": 3389920.0
+            },
+            "axial_tilt_deg": 25.19,
+            "bond_albedo": 0.15,
+            "mean_solar_day_s": 88775.24415,
+            "mean_temperature_K": 210.0,
+            "surface_pressure_Pa": 560.0,
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 24994769702.2141,
+                "y": 231176036088.3359,
+                "z": 4231727944.539398
+            },
+            "velocity_ms": {
+                "x": -23170.942234766168,
+                "y": 4662.52909105845,
+                "z": 665.8652934339535
+            }
+        }
+    },
+    "599": {
+        "name": "Jupiter",
+        "type": "planet",
+        "physical": {
+            "mass_kg": 1.89819e+27,
+            "radius_m": {
+                "x": 71492000.0,
+                "y": 71492000.0,
+                "z": 71492000.0
+            },
+            "axial_tilt_deg": 3.13,
+            "bond_albedo": 0.52,
+            "mean_solar_day_s": 35733.24,
+            "mean_temperature_K": 165.0,
+            "surface_pressure_Pa": null,
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": -519590680280.93115,
+                "y": 600003025855.5308,
+                "z": 9132729551.131874
+            },
+            "velocity_ms": {
+                "x": -10038.463726204362,
+                "y": -7949.223844175316,
+                "z": 257.63134366172966
+            }
+        }
+    },
+    "699": {
+        "name": "Saturn",
+        "type": "planet",
+        "physical": {
+            "mass_kg": 5.6834e+26,
+            "radius_m": {
+                "x": 60268000.0,
+                "y": 60268000.0,
+                "z": 60268000.0
+            },
+            "axial_tilt_deg": 26.73,
+            "bond_albedo": 0.47,
+            "mean_solar_day_s": 38361.6,
+            "mean_temperature_K": 134.0,
+            "surface_pressure_Pa": null,
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 1385749962865.9192,
+                "y": 261864991744.85748,
+                "z": -59721906760.94715
+            },
+            "velocity_ms": {
+                "x": -2330.335217772673,
+                "y": 9466.368322889084,
+                "z": -71.67701255106618
+            }
+        }
+    },
+    "799": {
+        "name": "Uranus",
+        "type": "planet",
+        "physical": {
+            "mass_kg": 8.6813e+25,
+            "radius_m": {
+                "x": 25559000.0,
+                "y": 25559000.0,
+                "z": 25559000.0
+            },
+            "axial_tilt_deg": 97.77,
+            "bond_albedo": 0.51,
+            "mean_solar_day_s": 62063.99999999999,
+            "mean_temperature_K": 76.0,
+            "surface_pressure_Pa": null,
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 1337586892615.667,
+                "y": 2582615317172.8403,
+                "z": -7751769798.637986
+            },
+            "velocity_ms": {
+                "x": -6107.594617040931,
+                "y": 2810.620262641843,
+                "z": 89.98279021443034
+            }
+        }
+    },
+    "899": {
+        "name": "Neptune",
+        "type": "planet",
+        "physical": {
+            "mass_kg": 1.02409e+26,
+            "radius_m": {
+                "x": 24766000.0,
+                "y": 24766000.0,
+                "z": 24766000.0
+            },
+            "axial_tilt_deg": 28.32,
+            "bond_albedo": 0.41,
+            "mean_solar_day_s": 57996.0,
+            "mean_temperature_K": 72.0,
+            "surface_pressure_Pa": null,
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 4463712875099.199,
+                "y": 205066773226.9213,
+                "z": -107087852114.87
+            },
+            "velocity_ms": {
+                "x": -294.7685708647846,
+                "y": 5456.833250038059,
+                "z": -106.3140524442761
+            }
+        }
+    },
+    "999": {
+        "name": "134340 Pluto",
+        "type": "planet",
+        "physical": {
+            "mass_kg": 1.3e+22,
+            "radius_m": {
+                "x": 1188300.0,
+                "y": 1188300.0,
+                "z": 1188300.0
+            },
+            "axial_tilt_deg": null,
+            "bond_albedo": null,
+            "mean_solar_day_s": 551815.2000000001,
+            "mean_temperature_K": null,
+            "surface_pressure_Pa": null,
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 2985415604451.853,
+                "y": -4394156877919.3604,
+                "z": -393234362699.9729
+            },
+            "velocity_ms": {
+                "x": 4651.227791006744,
+                "y": 1831.789671282366,
+                "z": -1563.787236122747
+            }
+        }
+    },
+    "1;": {
+        "name": "Ceres",
+        "type": "minorBody",
+        "physical": {
+            "mass_kg": 9.384e+20,
+            "dimensions_m": {
+                "x": 469700,
+                "y": 469700,
+                "z": 469700
+            },
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 46762773407.97063,
+                "y": 397524856590.6173,
+                "z": 3970211269.079655
+            },
+            "velocity_ms": {
+                "x": 9.201724467227129,
+                "y": 3.370381135398406,
+                "z": -0.2850337057661093
+            }
+        }
+    },
+    "2;": {
+        "name": "Pallas",
+        "type": "minorBody",
+        "physical": {
+            "mass_kg": 2.04e+20,
+            "dimensions_m": {
+                "x": 582000,
+                "y": 556000,
+                "z": 500000
+            },
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 403850628370.16864,
+                "y": 84164875557.63379,
+                "z": -93265391653.58696
+            },
+            "velocity_ms": {
+                "x": -2.665042983361161,
+                "y": 9.076070444260308,
+                "z": -1.610668575697252
+            }
+        }
+    },
+    "3;": {
+        "name": "Juno",
+        "type": "minorBody",
+        "physical": {
+            "mass_kg": 2.27e+19,
+            "dimensions_m": {
+                "x": 290000,
+                "y": 240,
+                "z": 0
+            },
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 284266112182.6326,
+                "y": -268215482222.58652,
+                "z": 49283833501.31877
+            },
+            "velocity_ms": {
+                "x": 7.840898575049344,
+                "y": 5.191795293676725,
+                "z": 0.6598655787564316
+            }
+        }
+    },
+    "4;": {
+        "name": "Vesta",
+        "type": "minorBody",
+        "physical": {
+            "mass_kg": 2.591e+20,
+            "dimensions_m": {
+                "x": 572600,
+                "y": 557200,
+                "z": 446400
+            },
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 350710624062.7318,
+                "y": 98847748426.47379,
+                "z": -45639691878.25746
+            },
+            "velocity_ms": {
+                "x": -8.779290950353063,
+                "y": 4.462599423343603,
+                "z": 2.9276536510392828
+            }
+        }
+    },
+    "136199;": {
+        "name": "Eris",
+        "type": "minorBody",
+        "physical": {
+            "mass_kg": 1.647e+22,
+            "dimensions_m": {
+                "x": 1200000,
+                "y": 1200000,
+                "z": 1200000
+            },
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 12728386358586.229,
+                "y": 5938170027574.673,
+                "z": -2580017797270.596
+            },
+            "velocity_ms": {
+                "x": -0.3880544523148205,
+                "y": 0.4493990416442214,
+                "z": 1.198281203968504
+            }
+        }
+    },
+    "136108;": {
+        "name": "Haumea",
+        "type": "minorBody",
+        "physical": {
+            "mass_kg": 4.006e+21,
+            "dimensions_m": {
+                "x": 2320000,
+                "y": 1700000,
+                "z": 1138000
+            },
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": -5482222969608.461,
+                "y": -3602213218983.129,
+                "z": 3517331597985.382
+            },
+            "velocity_ms": {
+                "x": 1.172557769861825,
+                "y": -1.724010624763556,
+                "z": -0.7446717856478846
+            }
+        }
+    },
+    "136472;": {
+        "name": "Makemake",
+        "type": "minorBody",
+        "physical": {
+            "mass_kg": 3.1e+21,
+            "dimensions_m": {
+                "x": 715000,
+                "y": 715000,
+                "z": 715000
+            },
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": -6871173764433.241,
+                "y": -1440416287766.1108,
+                "z": 3598278154278.323
+            },
+            "velocity_ms": {
+                "x": -0.01922692244439941,
+                "y": -1.911429707618814,
+                "z": -1.053058489163954
+            }
+        }
+    },
+    "301": {
+        "name": "Moon",
+        "type": "moon",
+        "physical": {
+            "mass_kg": 7.349e+22,
+            "radius_m": {
+                "x": 1737530.0,
+                "y": 1737530.0,
+                "z": 1737530.0
+            },
+            "mean_solar_day_s": 2551443.84,
+            "orbiting": "Earth"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 149796082707.0193,
+                "y": 12031399557.35118,
+                "z": 24875015.63552581
+            },
+            "velocity_ms": {
+                "x": -3262.160301455062,
+                "y": 30534.696743362052,
+                "z": 52.73458138285925
+            }
+        }
+    },
+    "401": {
+        "name": "Phobos",
+        "type": "moon",
+        "physical": {
+            "mass_kg": 1.08e+20,
+            "radius_m": {
+                "x": 13100.0,
+                "y": 11100.0,
+                "z": 9300.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Mars"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 24987162257.453068,
+                "y": 231180195014.8461,
+                "z": 4235617171.3674965
+            },
+            "velocity_ms": {
+                "x": -24063.60001195114,
+                "y": 2776.1964933160993,
+                "z": 969.6402529410462
+            }
+        }
+    },
+    "402": {
+        "name": "Deimos",
+        "type": "moon",
+        "physical": {
+            "mass_kg": 1.8e+20,
+            "radius_m": {
+                "x": 7800.0,
+                "y": 6000.0,
+                "z": 5100.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Mars"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 25014745756.18977,
+                "y": 231185163914.2598,
+                "z": 4223483084.4373555
+            },
+            "velocity_ms": {
+                "x": -23622.43763048915,
+                "y": 5904.4112948778,
+                "z": 947.8919917535951
+            }
+        }
+    },
+    "501": {
+        "name": "Io",
+        "type": "moon",
+        "physical": {
+            "mass_kg": null,
+            "radius_m": {
+                "x": 1821490.0,
+                "y": 1821490.0,
+                "z": 1821490.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Jupiter"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": -519991213726.16705,
+                "y": 599865810843.746,
+                "z": 9122037308.817625
+            },
+            "velocity_ms": {
+                "x": -4439.960801582737,
+                "y": -24273.25650640642,
+                "z": -252.55375493741988
+            }
+        }
+    },
+    "502": {
+        "name": "Europa",
+        "type": "moon",
+        "physical": {
+            "mass_kg": null,
+            "radius_m": {
+                "x": 1560800.0,
+                "y": 1560800.0,
+                "z": 1560800.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Jupiter"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": -519330248953.5354,
+                "y": 599385028183.5338,
+                "z": 9119342993.568272
+            },
+            "velocity_ms": {
+                "x": 2677.242634097599,
+                "y": -2738.751834811354,
+                "z": 671.8479711389775
+            }
+        }
+    },
+    "503": {
+        "name": "Ganymede",
+        "type": "moon",
+        "physical": {
+            "mass_kg": null,
+            "radius_m": {
+                "x": 2631200.0,
+                "y": 2631200.0,
+                "z": 2631200.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Jupiter"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": -519990383294.6303,
+                "y": 599010207598.013,
+                "z": 9088939723.276108
+            },
+            "velocity_ms": {
+                "x": 59.0603746882632,
+                "y": -11984.38150751107,
+                "z": 250.99864865854383
+            }
+        }
+    },
+    "504": {
+        "name": "Callisto",
+        "type": "moon",
+        "physical": {
+            "mass_kg": null,
+            "radius_m": {
+                "x": 2410300.0,
+                "y": 2410300.0,
+                "z": 2410300.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Jupiter"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": -521294950405.979,
+                "y": 600828397360.5681,
+                "z": 9135640824.81888
+            },
+            "velocity_ms": {
+                "x": -13622.353695008791,
+                "y": -15271.665101756182,
+                "z": -19.95088695449621
+            }
+        }
+    },
+    "601": {
+        "name": "Mimas",
+        "type": "moon",
+        "physical": {
+            "mass_kg": 3.75e+19,
+            "radius_m": {
+                "x": 198800.0,
+                "y": 198800.0,
+                "z": 198800.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Saturn"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 1385905146999.369,
+                "y": 261777298578.92297,
+                "z": -59685806854.854004
+            },
+            "velocity_ms": {
+                "x": 5224.79255699159,
+                "y": 20301.131447401753,
+                "z": -6298.297666531628
+            }
+        }
+    },
+    "602": {
+        "name": "Enceladus",
+        "type": "moon",
+        "physical": {
+            "mass_kg": 1.0805e+20,
+            "radius_m": {
+                "x": 252300.0,
+                "y": 252300.0,
+                "z": 252300.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Saturn"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 1385545767380.169,
+                "y": 261764193352.3176,
+                "z": -59649339057.11158
+            },
+            "velocity_ms": {
+                "x": 4143.33261520661,
+                "y": -335.7418569405848,
+                "z": 4436.086932362015
+            }
+        }
+    },
+    "603": {
+        "name": "Tethys",
+        "type": "moon",
+        "physical": {
+            "mass_kg": 6.176e+20,
+            "radius_m": {
+                "x": 536300.0,
+                "y": 536300.0,
+                "z": 536300.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Saturn"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 1385532225880.819,
+                "y": 262046842370.2752,
+                "z": -59801570862.72981
+            },
+            "velocity_ms": {
+                "x": -9939.760682266398,
+                "y": 2272.0069361014553,
+                "z": 4310.555287196473
+            }
+        }
+    },
+    "604": {
+        "name": "Dione",
+        "type": "moon",
+        "physical": {
+            "mass_kg": 1.09572e+21,
+            "radius_m": {
+                "x": 562500.0,
+                "y": 562500.0,
+                "z": 562500.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Saturn"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 1385637353956.861,
+                "y": 262187778398.231,
+                "z": -59879996129.03624
+            },
+            "velocity_ms": {
+                "x": -11883.64623219148,
+                "y": 7181.3625061859575,
+                "z": 2046.8316352155841
+            }
+        }
+    },
+    "605": {
+        "name": "Rhea",
+        "type": "moon",
+        "physical": {
+            "mass_kg": 2.309e+21,
+            "radius_m": {
+                "x": 764500.0,
+                "y": 764500.0,
+                "z": 764500.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Saturn"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 1385262204923.931,
+                "y": 262057893250.2174,
+                "z": -59778386368.81513
+            },
+            "velocity_ms": {
+                "x": -5484.707015271018,
+                "y": 2639.092440062687,
+                "z": 3839.584093212362
+            }
+        }
+    },
+    "606": {
+        "name": "Titan",
+        "type": "moon",
+        "physical": {
+            "mass_kg": 1.34553e+23,
+            "radius_m": {
+                "x": 2575500.0,
+                "y": 2575500.0,
+                "z": 2575500.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Saturn"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 1386592632559.8618,
+                "y": 261084097350.2568,
+                "z": -59403077889.20267
+            },
+            "velocity_ms": {
+                "x": 1614.092251220886,
+                "y": 12961.77015822961,
+                "z": -2266.394649137389
+            }
+        }
+    },
+    "607": {
+        "name": "Hyperion",
+        "type": "moon",
+        "physical": {
+            "mass_kg": 1.08e+19,
+            "radius_m": {
+                "x": 133000.0,
+                "y": 133000.0,
+                "z": 133000.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Saturn"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 1386411331838.133,
+                "y": 263169076709.1659,
+                "z": -60438213911.76622
+            },
+            "velocity_ms": {
+                "x": -6534.703821339029,
+                "y": 11240.93253400289,
+                "z": -573.4853939846118
+            }
+        }
+    },
+    "608": {
+        "name": "Iapetus",
+        "type": "moon",
+        "physical": {
+            "mass_kg": 1.8059e+21,
+            "radius_m": {
+                "x": 734500.0,
+                "y": 734500.0,
+                "z": 734500.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Saturn"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 1384875459780.059,
+                "y": 258499116726.517,
+                "z": -58772232375.91349
+            },
+            "velocity_ms": {
+                "x": 755.6210744021117,
+                "y": 8634.365609508517,
+                "z": -500.31807266006246
+            }
+        }
+    },
+    "609": {
+        "name": "Phoebe",
+        "type": "moon",
+        "physical": {
+            "mass_kg": 8.289e+18,
+            "radius_m": {
+                "x": 106600.0,
+                "y": 106600.0,
+                "z": 106600.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Saturn"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 1394006489711.479,
+                "y": 253944118497.31808,
+                "z": -60730794267.54286
+            },
+            "velocity_ms": {
+                "x": -3802.794776412536,
+                "y": 8257.88908770747,
+                "z": 116.4775302739804
+            }
+        }
+    },
+    "701": {
+        "name": "Ariel",
+        "type": "moon",
+        "physical": {
+            "mass_kg": null,
+            "radius_m": {
+                "x": 581100.0,
+                "y": 577900.0,
+                "z": 577700.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Uranus"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 1337751406691.961,
+                "y": 2582567664225.85,
+                "z": -7835966866.944671
+            },
+            "velocity_ms": {
+                "x": -8648.121726196274,
+                "y": 2687.884726769253,
+                "z": -4799.163044492899
+            }
+        }
+    },
+    "702": {
+        "name": "Umbriel",
+        "type": "moon",
+        "physical": {
+            "mass_kg": null,
+            "radius_m": {
+                "x": 584700.0,
+                "y": 584700.0,
+                "z": 584700.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Uranus"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 1337772571998.06,
+                "y": 2582601200680.2803,
+                "z": -7562180420.205593
+            },
+            "velocity_ms": {
+                "x": -2902.250071932465,
+                "y": 1669.437318482212,
+                "z": -3111.2638499483596
+            }
+        }
+    },
+    "703": {
+        "name": "Titania",
+        "type": "moon",
+        "physical": {
+            "mass_kg": null,
+            "radius_m": {
+                "x": 788900.0,
+                "y": 788900.0,
+                "z": 788900.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Uranus"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 1337923749027.771,
+                "y": 2582506069409.7617,
+                "z": -8005842992.220163
+            },
+            "velocity_ms": {
+                "x": -8294.40417058035,
+                "y": 2882.352034071442,
+                "z": -2829.003913897669
+            }
+        }
+    },
+    "704": {
+        "name": "Oberon",
+        "type": "moon",
+        "physical": {
+            "mass_kg": null,
+            "radius_m": {
+                "x": 761400.0,
+                "y": 761400.0,
+                "z": 761400.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Uranus"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 1338029223193.335,
+                "y": 2582572432824.8647,
+                "z": -7375386465.530753
+            },
+            "velocity_ms": {
+                "x": -4168.103993851317,
+                "y": 2050.770190727816,
+                "z": -2283.114361379536
+            }
+        }
+    },
+    "705": {
+        "name": "Miranda",
+        "type": "moon",
+        "physical": {
+            "mass_kg": null,
+            "radius_m": {
+                "x": 240000.0,
+                "y": 234200.0,
+                "z": 232900.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Uranus"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 1337709206362.194,
+                "y": 2582582666344.476,
+                "z": -7722705861.595154
+            },
+            "velocity_ms": {
+                "x": -4917.570534145058,
+                "y": 1498.916774826236,
+                "z": -6349.244304968056
+            }
+        }
+    },
+    "801": {
+        "name": "Triton",
+        "type": "moon",
+        "physical": {
+            "mass_kg": null,
+            "radius_m": {
+                "x": 1352600.0,
+                "y": 1352600.0,
+                "z": 1352600.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Neptune"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 4463411544047.047,
+                "y": 204944424793.976,
+                "z": -106946154276.8014
+            },
+            "velocity_ms": {
+                "x": -252.58725410042894,
+                "y": 8735.38863518465,
+                "z": 2812.865835968476
+            }
+        }
+    },
+    "802": {
+        "name": "Nereid",
+        "type": "moon",
+        "physical": {
+            "mass_kg": null,
+            "radius_m": {
+                "x": 170000.0,
+                "y": 170000.0,
+                "z": 170000.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Neptune"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 4462917175164.591,
+                "y": 213268721495.8583,
+                "z": -106584339391.7991
+            },
+            "velocity_ms": {
+                "x": -747.0703686451437,
+                "y": 5000.959544112119,
+                "z": -162.2829875857903
+            }
+        }
+    },
+    "901": {
+        "name": "Charon",
+        "type": "moon",
+        "physical": {
+            "mass_kg": null,
+            "radius_m": {
+                "x": 606000.0,
+                "y": 606000.0,
+                "z": 606000.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Pluto"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 2985403863679.096,
+                "y": -4394172077541.0054,
+                "z": -393238266915.4754
+            },
+            "velocity_ms": {
+                "x": 4556.227078068679,
+                "y": 1853.628869566584,
+                "z": -1363.139795089575
+            }
+        }
+    },
+    "902": {
+        "name": "Nix",
+        "type": "moon",
+        "physical": {
+            "mass_kg": null,
+            "radius_m": {
+                "x": 18000.0,
+                "y": 18000.0,
+                "z": 18000.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Pluto"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 2985399899322.797,
+                "y": -4394146276827.5137,
+                "z": -393189939002.53955
+            },
+            "velocity_ms": {
+                "x": 4737.1378259459225,
+                "y": 1939.8388969158839,
+                "z": -1540.24977510148
+            }
+        }
+    },
+    "903": {
+        "name": "Hydra",
+        "type": "moon",
+        "physical": {
+            "mass_kg": null,
+            "radius_m": {
+                "x": 18500.0,
+                "y": 18500.0,
+                "z": 18500.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Pluto"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 2985424619409.273,
+                "y": -4394117156580.434,
+                "z": -393185895506.8581
+            },
+            "velocity_ms": {
+                "x": 4728.697367073963,
+                "y": 1889.181253898586,
+                "z": -1608.055203820526
+            }
+        }
+    },
+    "904": {
+        "name": "Kerberos",
+        "type": "moon",
+        "physical": {
+            "mass_kg": null,
+            "radius_m": {
+                "x": 6000.0,
+                "y": 6000.0,
+                "z": 6000.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Pluto"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 2985436736003.581,
+                "y": -4394114949748.582,
+                "z": -393204392586.9381
+            },
+            "velocity_ms": {
+                "x": 4722.85092188857,
+                "y": 1860.624278848251,
+                "z": -1640.140843852189
+            }
+        }
+    },
+    "905": {
+        "name": "Styx",
+        "type": "moon",
+        "physical": {
+            "mass_kg": null,
+            "radius_m": {
+                "x": 5200.0,
+                "y": 5200.0,
+                "z": 5200.0
+            },
+            "mean_solar_day_s": null,
+            "orbiting": "Pluto"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 2985386864600.748,
+                "y": -4394191092646.02,
+                "z": -393239127874.09503
+            },
+            "velocity_ms": {
+                "x": 4586.50947481759,
+                "y": 1860.2950681493592,
+                "z": -1404.940592787642
+            }
+        }
+    },
+    "-31": {
+        "name": "Voyager 1 Spacecraft (interplanetary)",
+        "type": "spacecraft",
+        "physical": {
+            "mass_kg": 735,
+            "dimensions_m": {
+                "x": 13,
+                "y": 10,
+                "z": 3.8
+            },
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": -4810988265921.43,
+                "y": -20465174006521.52,
+                "z": 14806951724127.34
+            },
+            "velocity_ms": {
+                "x": -2069.946083735058,
+                "y": -13611.29926447953,
+                "z": 9831.985749023328
+            }
+        }
+    },
+    "-32": {
+        "name": "Voyager 2 Spacecraft (interplanetary)",
+        "type": "spacecraft",
+        "physical": {
+            "mass_kg": 735,
+            "dimensions_m": {
+                "x": 13,
+                "y": 10,
+                "z": 3.8
+            },
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 5966420607816.292,
+                "y": -15774843927497.14,
+                "z": -13416519095039.41
+            },
+            "velocity_ms": {
+                "x": 4203.415416920321,
+                "y": -9340.333189685534,
+                "z": -11316.832797894669
+            }
+        }
+    },
+    "-98": {
+        "name": "New Horizons Spacecraft",
+        "type": "spacecraft",
+        "physical": {
+            "mass_kg": 478,
+            "dimensions_m": {
+                "x": 2.7,
+                "y": 2.2,
+                "z": 2.2
+            },
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 3117329724225.831,
+                "y": -9313127989036.266,
+                "z": 342530689506.3939
+            },
+            "velocity_ms": {
+                "x": 5307.856081311553,
+                "y": -12489.68255458375,
+                "z": 491.52762093925253
+            }
+        }
+    },
+    "-61": {
+        "name": "Juno Spacecraft",
+        "type": "spacecraft",
+        "physical": {
+            "mass_kg": 1593,
+            "dimensions_m": {
+                "x": 18,
+                "y": 3.5,
+                "z": 3.5
+            },
+            "orbiting": "Sun, Jupiter"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": -518080326870.6313,
+                "y": 598965708368.4554,
+                "z": 3696713281.90586
+            },
+            "velocity_ms": {
+                "x": -9981.683085447099,
+                "y": -8515.295083373885,
+                "z": 1190.9570836236749
+            }
+        }
+    },
+    "-23": {
+        "name": "Pioneer 10 Spacecraft (interplanetary)",
+        "type": "spacecraft",
+        "physical": {
+            "mass_kg": 258,
+            "dimensions_m": {
+                "x": 13.2,
+                "y": 6,
+                "z": 2.9
+            },
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 3600665291471.757,
+                "y": 20892381475931.79,
+                "z": 1105735662655.595
+            },
+            "velocity_ms": {
+                "x": 1226.920844118562,
+                "y": 11770.79680437213,
+                "z": 603.0366969421905
+            }
+        }
+    },
+    "-24": {
+        "name": "Pioneer 11 Spacecraft",
+        "type": "spacecraft",
+        "physical": {
+            "mass_kg": 258.5,
+            "dimensions_m": {
+                "x": 13.2,
+                "y": 6,
+                "z": 2.9
+            },
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 4350317777491.664,
+                "y": -16568136568741.1,
+                "z": 4222406096781.481
+            },
+            "velocity_ms": {
+                "x": 4037.4563291115305,
+                "y": -10095.98574134542,
+                "z": 2431.401934292702
+            }
+        }
+    },
+    "-96": {
+        "name": "Parker Solar Probe",
+        "type": "spacecraft",
+        "physical": {
+            "mass_kg": 633,
+            "dimensions_m": {
+                "x": 3.0,
+                "y": 2.3,
+                "z": 2.3
+            },
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 62635409896.06309,
+                "y": -68298018676.69698,
+                "z": -4554609047.290832
+            },
+            "velocity_ms": {
+                "x": 23497.461482539522,
+                "y": -4767.189943213049,
+                "z": -1419.814271481378
+            }
+        }
+    },
+    "-64": {
+        "name": "OSIRIS-REx",
+        "type": "spacecraft",
+        "physical": {
+            "mass_kg": 1215,
+            "dimensions_m": {
+                "x": 6.2,
+                "y": 2.43,
+                "z": 3.15
+            },
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 149131903238.4964,
+                "y": -76953576996.07396,
+                "z": -4401860.740847886
+            },
+            "velocity_ms": {
+                "x": 6870.282361888416,
+                "y": 26474.885646636198,
+                "z": 2.007402926551549
+            }
+        }
+    },
+    "-203": {
+        "name": "Dawn Spacecraft (interplanetary)",
+        "type": "spacecraft",
+        "physical": {
+            "mass_kg": 747.1,
+            "dimensions_m": {
+                "x": 19.7,
+                "y": 1.27,
+                "z": 1.77
+            },
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 46763744461.44517,
+                "y": 397521447900.88525,
+                "z": 3967965711.816192
+            },
+            "velocity_ms": {
+                "x": -18181.03028819831,
+                "y": 746.5937198066183,
+                "z": 3304.769011568424
+            }
+        }
+    },
+    "-159": {
+        "name": "Europa Clipper (Spacecraft)",
+        "type": "spacecraft",
+        "physical": {
+            "mass_kg": 5800,
+            "dimensions_m": {
+                "x": 30.5,
+                "y": 17.6,
+                "z": 8.5
+            },
+            "orbiting": "Sun, Jupiter"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 122832474103.8245,
+                "y": -54991636703.44472,
+                "z": -4786547993.3603
+            },
+            "velocity_ms": {
+                "x": 7897.7107363613695,
+                "y": 36794.649533213254,
+                "z": 151.1318558277726
+            }
+        }
+    },
+    "-28": {
+        "name": "JUICE Spacecraft",
+        "type": "spacecraft",
+        "physical": {
+            "mass_kg": 6070,
+            "dimensions_m": {
+                "x": 16.8,
+                "y": 27.1,
+                "z": 13.7
+            },
+            "orbiting": "Sun-Jupiter-Ganymede"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 149892665353.5194,
+                "y": 11928189771.333721,
+                "z": -5056919.033635408
+            },
+            "velocity_ms": {
+                "x": -13764.31762673534,
+                "y": 28297.83247840636,
+                "z": 82.38853608401975
+            }
+        }
+    },
+    "-144": {
+        "name": "Solar Orbiter Spacecraft",
+        "type": "spacecraft",
+        "physical": {
+            "mass_kg": 1800,
+            "dimensions_m": {
+                "x": 18.0,
+                "y": 3.1,
+                "z": 2.7
+            },
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 71480116426.21268,
+                "y": 75282801514.23508,
+                "z": 23116981925.29327
+            },
+            "velocity_ms": {
+                "x": -10090.83585619319,
+                "y": 29877.56595831574,
+                "z": 3915.273793094642
+            }
+        }
+    },
+    "-49": {
+        "name": "Lucy Spacecraft",
+        "type": "spacecraft",
+        "physical": {
+            "mass_kg": 1500,
+            "dimensions_m": {
+                "x": 15.82,
+                "y": 7.28,
+                "z": 2.0
+            },
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": -555198293050.5764,
+                "y": -515234719344.5485,
+                "z": -36344506866.4632
+            },
+            "velocity_ms": {
+                "x": 1183.454187949334,
+                "y": -9170.594943381011,
+                "z": 198.4854032354173
+            }
+        }
+    },
+    "-255": {
+        "name": "Psyche Spacecraft",
+        "type": "spacecraft",
+        "physical": {
+            "mass_kg": 2747,
+            "dimensions_m": {
+                "x": 24.76,
+                "y": 7.34,
+                "z": 4.9
+            },
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": -9801666075.569145,
+                "y": 248385451826.48132,
+                "z": -10547525397.17859
+            },
+            "velocity_ms": {
+                "x": -24603.20668207097,
+                "y": 5887.357807758632,
+                "z": 130.5456050593921
+            }
+        }
+    },
+    "-121": {
+        "name": "BepiColombo",
+        "type": "spacecraft",
+        "physical": {
+            "mass_kg": 4100,
+            "dimensions_m": {
+                "x": 30.0,
+                "y": 6.3,
+                "z": 3.9
+            },
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": -13045756045.67203,
+                "y": -68983952361.82043,
+                "z": -4417294068.253012
+            },
+            "velocity_ms": {
+                "x": 38255.771095040756,
+                "y": -6213.5561090595165,
+                "z": -3999.868631135659
+            }
+        }
+    },
+    "-37": {
+        "name": "Hayabusa 2 Spacecraft",
+        "type": "spacecraft",
+        "physical": {
+            "mass_kg": 609,
+            "dimensions_m": {
+                "x": 1.6,
+                "y": 1.3,
+                "z": 1.0
+            },
+            "orbiting": "Sun"
+        },
+        "state": {
+            "epoch": "2026-09-28T00:41:04.126082+00:00",
+            "reference_frame": "ecliptic",
+            "position_m": {
+                "x": 142386511101.4798,
+                "y": -55262874486.08854,
+                "z": -11411336052.938261
+            },
+            "velocity_ms": {
+                "x": 12738.00134333586,
+                "y": 24573.86180576497,
+                "z": -500.3040817028275
+            }
+        }
+    }
+}

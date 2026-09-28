@@ -20,8 +20,6 @@
 #define G 6.6743e-11
 
 int targetFps;
-
-
 PolarVector3 cameraPolar;
 
 Planet mainPlanets[256];
@@ -51,8 +49,8 @@ int main() {
     //set
     initData(mainPlanets, &numPlanets, mainMinorBodies, &numMinorBodies, mainMoons, &numMoons, mainSpacecraft, &numSpacecraft);
     doItwithAllDifferent(setDrawCordinatesPlanet, setDrawCordinatesMinorBody, setDrawCordinatesMoon, setDrawCordinatesSpacecraft, mainPlanets, numPlanets, mainMinorBodies, numMinorBodies, mainMoons, numMoons, mainSpacecraft, numSpacecraft);
-    setInitialMiscellanious();
     setIntialCamera(&pov, &cameraPolar);
+
 
 
 
@@ -66,9 +64,7 @@ int main() {
 
         BeginMode3D(pov);   
 
-        //DrawSphere((Vector3){0, 2, 0}, 1, BLUE);
-        //DrawModel(voyager, (Vector3){0, 0, 0}, 1.0f, RAYWHITE);
-        drawCelestialBodies(mainPlanets, numPlanets, mainMinorBodies, numMinorBodies, mainMoons, numMoons, mainSpacecraft, numSpacecraft);
+        drawCelestialBodies(mainPlanets, numPlanets, mainMinorBodies, numMinorBodies, mainMoons, numMoons, mainSpacecraft, numSpacecraft, &pov);
 
         EndMode3D();
 

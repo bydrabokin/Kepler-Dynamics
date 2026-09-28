@@ -4,14 +4,22 @@
 #define screenUnit_2_meter 1e10
 #define meter_2_screenUnit 1e-10
 
-void drawCelestialBodies(Planet *mainPlanets, int numPlanets, MinorBody *mainMinorBodies, int numMinorBodies, Moon *mainMoons, int numMoons, Spacecraft *mainSpacecraft, int numSpacecraft) {
+void drawBody(Vector3 pos, Vector3 radius, bool dimensions, Camera3D *camera) {
+    Vector2 screenCordinates = (Vector2){GetWorldToScreen(pos, *camera).x-900, GetWorldToScreen(pos, *camera).y-450} ;
+    EndMode3D();
+    DrawCircleLines(screenCordinates.x, screenCordinates.y, 2, WHITE);
+    BeginMode3D(*camera);
+
+}
+
+void drawCelestialBodies(Planet *mainPlanets, int numPlanets, MinorBody *mainMinorBodies, int numMinorBodies, Moon *mainMoons, int numMoons, Spacecraft *mainSpacecraft, int numSpacecraft, Camera3D *camera) {
     int celestialNum = numPlanets + numMinorBodies + numMoons + numSpacecraft;
     int index;
 
     for (int i = 0; i < celestialNum; i++) {
         if (i < numPlanets) {
             index = i;
-            DrawSphere((Vector3)mainPlanets[index].drawPos, mainPlanets[index].drawRadius.x, WHITE);
+            drawBody(mainPlanets[index].drawPos, mainPlanets[index].drawRadius, false, camera);
         } else if (i < numPlanets + numMinorBodies) {
             index = i - numPlanets;
             DrawSphere((Vector3)mainMinorBodies[index].drawPos, mainMinorBodies[index].drawDimensions.x/2.0, BLUE);
@@ -53,9 +61,11 @@ void setDrawCordinatesMoon(Moon *moon) {
 }   
 
 void setDrawCordinatesSpacecraft(Spacecraft *spacecraft) {
+
     spacecraft->drawPos = (Vector3){spacecraft->pos.x*meter_2_screenUnit, spacecraft->pos.y*meter_2_screenUnit, spacecraft->pos.z*meter_2_screenUnit};
     spacecraft->drawDimensions = (Vector3){spacecraft->dimensions.x*meter_2_screenUnit, spacecraft->dimensions.y*meter_2_screenUnit, spacecraft->dimensions.z*meter_2_screenUnit};
     if (spacecraft->drawDimensions.x < 0.1) spacecraft->drawDimensions.x = 0.1;
     if (spacecraft->drawDimensions.y < 0.1) spacecraft->drawDimensions.y = 0.1;
     if (spacecraft->drawDimensions.z < 0.1) spacecraft->drawDimensions.z = 0.1;
 }
+

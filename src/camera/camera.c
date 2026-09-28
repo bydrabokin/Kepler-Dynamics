@@ -31,9 +31,9 @@ void setIntialCamera(Camera3D *camera, PolarVector3 *cameraPolar) {
 void cameraLogic(Camera3D *camera, PolarVector3 *cameraPolar) {
     
     //zoom
-    if (GetMouseWheelMove() == 1.0) {
+    if (GetMouseWheelMove() == -1.0) {
         cameraPolar->r *= 1.2;
-    } else if (GetMouseWheelMove() == -1.0) {
+    } else if (GetMouseWheelMove() == 1.0) {
         cameraPolar->r *= 0.8;
     }
 
