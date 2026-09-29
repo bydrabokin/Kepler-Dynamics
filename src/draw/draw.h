@@ -1,14 +1,14 @@
 #ifndef DRAW_H
 #define DRAW_J
-#include "../../src/body.h"
+#include "../../src/body/body.h"
 
-void drawCelestialBodies(Planet *mainPlanets, int numPlanets, MinorBody *mainMinorBodies, int numMinorBodies, Moon *mainMoons, int numMoons, Spacecraft *mainSpacecraft, int numSpacecraft, Camera3D *camera);
 
-void setDrawCordinatesPlanet(Planet *planet);
-void setDrawCordinatesMinorBody(Planet *planet);
-void setDrawCordinatesMoon(Planet *planet);
-void setDrawCordinatesSpacecraft(Planet *planet);
+void drawCelestialBodies(Camera3D *camera);
 
-void drawBody(Vector3 pos, Vector3 radius, bool dimensions, Camera3D *camera);
+void setDrawCordinates(Vector3 pos, Vector3 radius, Vector3 *drawPos, Vector3 *drawRadius);
+
+void drawBody(Camera3D *camera, int fontsize, char *bodyType, int i);
+
+Color getaverageColor(Texture2D texture);
 
 #endif

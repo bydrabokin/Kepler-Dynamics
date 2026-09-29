@@ -4,7 +4,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "cJSON.h"
-#include "../src/body.h"
+#include "../src/body/body.h"
 #include "../src/DATA/parseData.h"
 #include "../src/utilities/utilities.h"
 #include "../src/draw/draw.h"
@@ -47,8 +47,10 @@ int main() {
     Camera3D pov = {0};
     
     //set
-    initData(mainPlanets, &numPlanets, mainMinorBodies, &numMinorBodies, mainMoons, &numMoons, mainSpacecraft, &numSpacecraft);
-    doItwithAllDifferent(setDrawCordinatesPlanet, setDrawCordinatesMinorBody, setDrawCordinatesMoon, setDrawCordinatesSpacecraft, mainPlanets, numPlanets, mainMinorBodies, numMinorBodies, mainMoons, numMoons, mainSpacecraft, numSpacecraft);
+    loadFiles();
+    initData();
+    linkTextures(mainPlanets, numPlanets);
+    doItwithAllSame(setDrawCordinates);
     setIntialCamera(&pov, &cameraPolar);
 
 
@@ -64,7 +66,7 @@ int main() {
 
         BeginMode3D(pov);   
 
-        drawCelestialBodies(mainPlanets, numPlanets, mainMinorBodies, numMinorBodies, mainMoons, numMoons, mainSpacecraft, numSpacecraft, &pov);
+        drawCelestialBodies(&pov);
 
         EndMode3D();
 

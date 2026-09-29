@@ -14,6 +14,9 @@ typedef struct  {
     char type[128];
     char bodyOrbiting[128];
 
+    Texture2D textureRaw;
+    Color color;
+
 } Planet;
 
 
@@ -27,6 +30,7 @@ typedef struct  {
     char name[128];
     char type[128];
     char bodyOrbiting[128];
+
 
 } MinorBody;
 
@@ -42,6 +46,8 @@ typedef struct  {
     char type[128];
     char bodyOrbiting[128];
 
+
+
 } Moon;
 
 typedef struct  {
@@ -56,5 +62,18 @@ typedef struct  {
     char bodyOrbiting[128];
 
 } Spacecraft;
+
+
+extern Planet mainPlanets[256];
+extern int numPlanets;
+
+extern MinorBody mainMinorBodies[256];
+extern int numMinorBodies;
+
+extern Moon mainMoons[256];
+extern int numMoons;
+
+extern Spacecraft mainSpacecraft[256];
+extern int numSpacecraft;
 
 #endif

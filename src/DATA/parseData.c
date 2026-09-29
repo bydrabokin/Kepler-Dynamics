@@ -1,9 +1,30 @@
 #include <stdio.h>
 #include <raylib.h>
 #include "../cJSON.h"
-#include "../../src/body.h"
+#include "../../src/body/body.h"
+#include "../../src/utilities/utilities.h"
+#include "../../src/draw/draw.h"
 #include <string.h>
 #include <stdlib.h>
+
+void linkTextures() {
+
+    mainPlanets[0].textureRaw = SunRaw;
+    mainPlanets[1].textureRaw = MercuryRaw;
+    mainPlanets[2].textureRaw = VenusRaw;
+    mainPlanets[3].textureRaw = EarthRaw;
+    mainPlanets[4].textureRaw = MarsRaw;
+    mainPlanets[5].textureRaw = JupiterRaw;
+    mainPlanets[6].textureRaw = SaturnRaw;
+    mainPlanets[7].textureRaw = UranusRaw;
+    mainPlanets[8].textureRaw = NeptuneRaw;
+    mainPlanets[9].textureRaw = PlutoRaw;
+
+    for (int i = 0; i < numPlanets; i++) {
+        mainPlanets[i].color = (Color)getaverageColor(mainPlanets[i].textureRaw);
+    }
+    
+}
 
 void readFile(char **wholeJsonStr) {
 
@@ -37,7 +58,7 @@ void readFile(char **wholeJsonStr) {
 }
 
 
-void initData(Planet *mainPlanets, int *numPlanets, MinorBody *mainMinorBodies, int *numMinorBodies, Moon *mainMoons, int *numMoons, Spacecraft *mainSpacecraft, int *numSpacecraft) {
+void initData() {
 
 
     char *file = NULL;
@@ -58,10 +79,11 @@ void initData(Planet *mainPlanets, int *numPlanets, MinorBody *mainMinorBodies, 
     cJSON *state, *position_m, *positionx, *positiony, *positionz, *velocity_ms, *velocityx, *velocityy, *velocityz;
     cJSON *type, *name, *physical, *mass_kg;
     
-    *numPlanets = 0;
-    *numMinorBodies = 0;
-    *numMoons = 0;
-    *numSpacecraft = 0;
+    numPlanets = 0;
+    numMinorBodies = 0;
+    numMoons = 0;
+    numSpacecraft = 0;
+
 
     while (body != NULL) {
 
@@ -107,9 +129,10 @@ void initData(Planet *mainPlanets, int *numPlanets, MinorBody *mainMinorBodies, 
         velocityx = cJSON_GetObjectItem(velocity_ms, "x");
         velocityy = cJSON_GetObjectItem(velocity_ms, "y");
         velocityz = cJSON_GetObjectItem(velocity_ms, "z");
+
         
         if (strcmp(type->valuestring, "planet") == 0) {
-            (*numPlanets)++;
+            numPlanets++;
             Planet bufferPlanet = {
 
                 .mass = mass_kg->valuedouble,
@@ -129,11 +152,14 @@ void initData(Planet *mainPlanets, int *numPlanets, MinorBody *mainMinorBodies, 
             strcpy(bufferPlanet.type, type->valuestring);
             strcpy(bufferPlanet.name, name->valuestring);
             strcpy(bufferPlanet.bodyOrbiting, orbiting->valuestring);
-    
+            
+
             mainPlanets[i] = (Planet)bufferPlanet;
 
+            
+
         } else if (strcmp(type->valuestring, "minorBody") == 0) {
-            (*numMinorBodies)++;
+            numMinorBodies++;
             MinorBody bufferMinorBody = {
 
                 .mass = mass_kg->valuedouble,
@@ -152,7 +178,7 @@ void initData(Planet *mainPlanets, int *numPlanets, MinorBody *mainMinorBodies, 
             mainMinorBodies[i] = (MinorBody)bufferMinorBody;
 
         } else if (strcmp(type->valuestring, "moon") == 0) {
-            (*numMoons)++;
+            numMoons++;
             Moon bufferMoon = {
 
                 .mass = mass_kg->valuedouble,
@@ -172,7 +198,7 @@ void initData(Planet *mainPlanets, int *numPlanets, MinorBody *mainMinorBodies, 
             mainMoons[i] = (Moon)bufferMoon;
 
         } else if (strcmp(type->valuestring, "spacecraft") == 0) {
-            (*numSpacecraft)++;
+            numSpacecraft++;
             Spacecraft bufferSpacecraft = {
 
                 .mass = mass_kg->valuedouble,
@@ -208,7 +234,8 @@ void initData(Planet *mainPlanets, int *numPlanets, MinorBody *mainMinorBodies, 
         if (strcmp(beforeType, afterType) != 0) {
             i = 0;
         }
-
-    }
+        
+    }    
 
 }
+

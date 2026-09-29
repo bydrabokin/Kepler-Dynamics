@@ -1,5 +1,6 @@
 #include <raylib.h>
 #include <math.h>
+#include "../../src/body/body.h"
 
 typedef struct  {
     double r, θ, φ;
@@ -14,14 +15,16 @@ Vector3 polar_2_cartesian(PolarVector3 polar) {
     return cartesian;
 }
 
+
 void setIntialCamera(Camera3D *camera, PolarVector3 *cameraPolar) {
 
-    cameraPolar->r = 100;
+    cameraPolar->r = 30;
     cameraPolar->θ = 90;
     cameraPolar->φ = 0;
 
-    camera->position = (Vector3){cameraPolar->r, cameraPolar->θ, cameraPolar->φ} ;
-    camera->target = (Vector3){0, 0, 0};
+
+    camera->target = (Vector3)mainPlanets[9].drawPos;
+    camera->position = (Vector3){camera->target.x + polar_2_cartesian(*cameraPolar).x, camera->target.y + polar_2_cartesian(*cameraPolar).y, camera->target.z + polar_2_cartesian(*cameraPolar).z};
     camera->up = (Vector3){0, 1, 0};
 
     camera->fovy = 100;
@@ -40,7 +43,7 @@ void cameraLogic(Camera3D *camera, PolarVector3 *cameraPolar) {
     //dragging
     if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
 
-        float sensitivity = 0.3;
+        float sensitivity = 0.1;
         Vector2 delta = {GetMouseDelta().x * sensitivity, GetMouseDelta().y * sensitivity};
         cameraPolar->θ += delta.x;
         cameraPolar->φ += delta.y;
@@ -60,5 +63,5 @@ void cameraLogic(Camera3D *camera, PolarVector3 *cameraPolar) {
 
         }
     
-    camera->position = (Vector3)polar_2_cartesian(*cameraPolar);
+    camera->position = (Vector3){camera->target.x + polar_2_cartesian(*cameraPolar).x, camera->target.y + polar_2_cartesian(*cameraPolar).y, camera->target.z + polar_2_cartesian(*cameraPolar).z};
 }

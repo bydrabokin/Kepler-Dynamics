@@ -23,6 +23,26 @@ def name(planet, response):
         name = response.text[nameStart:nameEnd]
         name = name[name.find("   "):].strip()
         name = name[:name.find("/")].strip()
+
+
+    if name.count("Spacecraft")>0:
+            name = name[:name.find("Spacecraft")]
+
+    if name.count("(") > 0:
+        name = name[:name.find("(")]
+    
+    if name.count("interplanetary")>0:
+        name = name[:name.find("interplanetary")]
+
+    for char in name:
+        if not char.isdigit():
+            name = name[name.find(char):]
+            break
+
+
+    name = name.strip()
+
+
     return name
 
 def centerBody(planet, response):
@@ -254,10 +274,10 @@ def pressure(response):
 
 now = datetime.now(timezone.utc)
 
-with open("data.txt", "w") as f:
+with open("DATA/data.txt", "w") as f:
     f.write(f"{now}")
 
-with open("data.json", "w") as f:
+with open("DATA/data.json", "w") as f:
     f.write(f"")
 
 time = datetime.now(timezone.utc).isoformat()
@@ -352,7 +372,7 @@ print(f"\nDate: {now}")
 
 print("\nFetching planet data from NASA...")
 
-with open("data.txt", "a") as f:
+with open("DATA/data.txt", "a") as f:
     f.write("\n\nPLANETS")
 
 for planetSelected in listPlanets:
@@ -363,7 +383,7 @@ for planetSelected in listPlanets:
     response = requests.post(url, data=params)
     #print(response.text)
 
-    with open("data.txt", "a") as f:
+    with open("DATA/data.txt", "a") as f:
         f.write("\n")
         f.write("Code: " + planet + "\n")
         f.write("Name: " + name(planet, response) + "\n")
@@ -434,7 +454,7 @@ for planetSelected in listPlanets:
 
 print("\nFetching dwarf planet/minor bodies data from NASA...")
 
-with open("data.txt", "a") as f:
+with open("DATA/data.txt", "a") as f:
     f.write("\nMINOR BDOIES/DWARF PLANETS")
 
 for dwarfSelected in dwarfPlanets:
@@ -445,7 +465,7 @@ for dwarfSelected in dwarfPlanets:
     response = requests.post(url, data=params)
     #print(response.text)
 
-    with open("data.txt", "a") as f:
+    with open("DATA/data.txt", "a") as f:
         f.write("\n")
         f.write("Code: " + planet + "\n")
         f.write("Name: " + name(planet, response) + "\n")
@@ -499,7 +519,7 @@ for dwarfSelected in dwarfPlanets:
 
 print("\nFetching moon data from NASA...")
 
-with open("data.txt", "a") as f:
+with open("DATA/data.txt", "a") as f:
     f.write("\n\nMOONS")
 
 for moonSelected in listMoons:
@@ -510,7 +530,7 @@ for moonSelected in listMoons:
     #print(response.text)
 
 
-    with open("data.txt", "a") as f:
+    with open("DATA/data.txt", "a") as f:
         f.write("\n")
         f.write("Code: " + planet + "\n")
         f.write("Name: " + name(planet, response) + "\n")
@@ -570,7 +590,7 @@ for moonSelected in listMoons:
     
 print("\nFetching spacecraft data from NASA...")
 
-with open("data.txt", "a") as f:
+with open("DATA/data.txt", "a") as f:
     f.write("\n\nSPACECRAFTS")
 
 for spacecraftSelected in listSpacecraft:
@@ -580,7 +600,7 @@ for spacecraftSelected in listSpacecraft:
     response = requests.post(url, data=params)
     #print(response.text)
     
-    with open("data.txt", "a") as f:
+    with open("DATA/data.txt", "a") as f:
         f.write("\n")
         f.write("Code: " + planet + "\n")
         f.write("Name: " + name(planet, response) + "\n")
@@ -632,7 +652,7 @@ for spacecraftSelected in listSpacecraft:
         }
     }
 
-with open("data.json", "w") as f:
+with open("DATA/data.json", "w") as f:
     json.dump(all_data, f, indent=4)
 
 print("\n")
