@@ -4,8 +4,10 @@
 #include <math.h>
 #include "../../src/body/body.h"
 #include "../../src/utilities/utilities.h"
-#define screenUnit_2_meter 1e10
-#define meter_2_screenUnit 1e-10
+#include "raymath.h"
+#define screenUnit_2_meter 1e7
+#define meter_2_screenUnit 1e-7
+
 
 void drawBody(Camera3D *camera, int fontsize, char *bodyType, int i) {
 
@@ -27,7 +29,7 @@ void drawBody(Camera3D *camera, int fontsize, char *bodyType, int i) {
         radius = mainMinorBodies[i].drawDimensions;
         rad = 4;
         multiplier = 0.5;
-        color = GRAY;
+        color = GRAY;   
         strcpy(name, mainMinorBodies[i].name);
     } else if (!strcmp(bodyType, "moon")) {
         pos = mainMoons[i].drawPos;
@@ -48,6 +50,7 @@ void drawBody(Camera3D *camera, int fontsize, char *bodyType, int i) {
     Vector2 screenCordinates = (Vector2){GetWorldToScreen(pos, *camera).x, GetWorldToScreen(pos, *camera).y};
     Vector2 screenPlanet;
     double dx, dy, distance;
+    double opacity = 255;
     bool draw = true;
 
     if (!strcmp(bodyType, "moon")) { 
@@ -66,22 +69,29 @@ void drawBody(Camera3D *camera, int fontsize, char *bodyType, int i) {
         distance = sqrt(dx*dx + dy*dy); 
 
 
-        if (distance < 3) draw = false;
-        if (!strcmp(mainPlanets[6].name, orbiting)) {
-            printf("%f\n", distance);
-        }
+        if (distance < 20) draw = false;
+        if (distance < 40) opacity = ((distance - 20) / 20) * 255;
 
+
+        
     }
-
-    double opacity = 255;
+    
+    double distanceToObject = Vector3Distance(camera->position, pos);
+    double projectedRadius = (radius.x*multiplier / (distanceToObject * tanf(camera->fovy * DEG2RAD / 2.0f))) * (GetScreenHeight() / 2.0f);
+    
+    if (projectedRadius > rad) {
+        draw = false;
+    } 
 
     
     EndMode3D();
     Vector2 textPos = {screenCordinates.x + fontsize/2.0, screenCordinates.y - fontsize/1.5};
     
     if (draw) {
+
         DrawTextEx(SpaceFont, name, textPos, fontsize, 1, (Color){color.r, color.g, color.b, opacity});
         DrawCircleLines(screenCordinates.x, screenCordinates.y, rad, (Color){color.r, color.g, color.b, opacity});
+        
     }
     
     BeginMode3D(*camera);

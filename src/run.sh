@@ -1,6 +1,6 @@
 #!/bin/bash
 
-gcc main.c DATA/parseData.c draw/draw.c utilities/utilities.c camera/camera.c \
+gcc main.c input/input.c DATA/parseData.c draw/draw.c utilities/utilities.c camera/camera.c \
     -o main -lraylib -lm -lX11 -lcjson
 
 if [ $? -eq 0 ]; then

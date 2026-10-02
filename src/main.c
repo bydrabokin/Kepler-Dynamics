@@ -9,12 +9,14 @@
 #include "../src/utilities/utilities.h"
 #include "../src/draw/draw.h"
 #include "../src/camera/camera.h"
+#include "../src/input/input.h"
+
 
 
 #define SCREEN_HALF_X 900
 #define SCREEN_HALF_Y 450
-#define screenUnit_2_meter 1e10
-#define meter_2_screenUnit 1e-10
+#define screenUnit_2_meter 1e7
+#define meter_2_screenUnit 1e-7
 
 #define AU 1.496e+11 //in meters
 #define G 6.6743e-11
@@ -47,18 +49,25 @@ int main() {
     Camera3D pov = {0};
     
     //set
-    loadFiles();
+    //loadFiles();
+    loadPlanets();
+    loadFont();
     initData();
     linkTextures(mainPlanets, numPlanets);
     doItwithAllSame(setDrawCordinates);
     setIntialCamera(&pov, &cameraPolar);
-
+    
 
 
 
     while (!WindowShouldClose()) {
         
         cameraLogic(&pov, &cameraPolar);
+        goToFocus(&pov, &cameraPolar);
+        
+
+        numbers_2_planets(&pov, &cameraPolar);
+
 
         //Drawing
         BeginDrawing();

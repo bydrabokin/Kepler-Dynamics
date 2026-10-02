@@ -12,6 +12,8 @@ void setIntialCamera(Camera3D *camera, PolarVector3 *cameraPolar);
 
 void cameraLogic(Camera3D *camera, PolarVector3 *cameraPolar);
 
+void changeFocus(Camera3D *camera,  PolarVector3 *cameraPolar, Vector3 pos, Vector3 radiusInput);
 
+void goToFocus(Camera3D *camera,  PolarVector3 *cameraPolar);
 
 #endif
