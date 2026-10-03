@@ -65,8 +65,9 @@ int main() {
         cameraLogic(&pov, &cameraPolar);
         goToFocus(&pov, &cameraPolar);
         
-
         numbers_2_planets(&pov, &cameraPolar);
+        clickOnBody(&pov, &cameraPolar);
+        
 
 
         //Drawing

@@ -72,8 +72,8 @@ void drawBody(Camera3D *camera, int fontsize, char *bodyType, int i) {
         if (distance < 20) draw = false;
         if (distance < 40) opacity = ((distance - 20) / 20) * 255;
 
+    
 
-        
     }
     
     double distanceToObject = Vector3Distance(camera->position, pos);
