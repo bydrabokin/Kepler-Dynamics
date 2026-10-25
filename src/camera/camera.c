@@ -10,11 +10,6 @@ typedef struct  {
 
 Vector3 focus = {0, 0, 0};
 Vector3 radius = {0, 0, 0};
-bool move = false;
-bool toggle = false;
-bool savedBool = false;
-
-
 
 double newTheta;
 double newPhi;
@@ -56,7 +51,7 @@ PolarVector3 cartesian_2_polar(Vector3 cartesian) {
 
 void setIntialCamera(Camera3D *camera, PolarVector3 *cameraPolar) {
 
-    cameraPolar->r = 300;
+    cameraPolar->r = 13134.634886;
     cameraPolar->θ = 90;
     cameraPolar->φ = 0;
 
@@ -67,6 +62,8 @@ void setIntialCamera(Camera3D *camera, PolarVector3 *cameraPolar) {
 
     camera->fovy = 100;
     camera->projection = CAMERA_PERSPECTIVE;
+    
+    
 }
 
 
@@ -75,15 +72,13 @@ void cameraLogic(Camera3D *camera, PolarVector3 *cameraPolar) {
     //zoom
     if (GetMouseWheelMove() == -1.0) {
         cameraPolar->r *= 1.2;
-        move = false;
     } else if (GetMouseWheelMove() == 1.0) {
         cameraPolar->r *= 0.8;
-        move = false;
     }
+
 
     //dragging
     if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
-        move = false;
         float sensitivity = 0.2;
         Vector2 delta = {GetMouseDelta().x * sensitivity, GetMouseDelta().y * sensitivity};
         cameraPolar->θ += delta.x;
@@ -113,12 +108,10 @@ void cameraLogic(Camera3D *camera, PolarVector3 *cameraPolar) {
 
 void changeFocus(Camera3D *camera,  PolarVector3 *cameraPolar, Vector3 pos, Vector3 radiusInput) {
         
-    focus = pos;
-    radius = radiusInput;
-    move = true;
+    camera->target = pos;
+    double targetRadius = 100;
+    double targetDistance = (radiusInput.x * GetScreenHeight()) / (2 * targetRadius * tanf(camera->fovy*DEG2RAD/2.0));
+    cameraPolar->r = targetDistance;
 
 }
 
-void goToFocus(Camera3D *camera,  PolarVector3 *cameraPolar) {
-    
-}

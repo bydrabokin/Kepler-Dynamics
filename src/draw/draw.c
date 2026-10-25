@@ -4,11 +4,189 @@
 #include <math.h>
 #include "../../src/body/body.h"
 #include "../../src/utilities/utilities.h"
+#include "../../src/input/input.h"
 #include "raymath.h"
-#define screenUnit_2_meter 1e7
-#define meter_2_screenUnit 1e-7
+#define screenUnit_2_meter 5e6
+#define meter_2_screenUnit 5e-6
 
 
+double nameTagDrawCondtions(Camera3D *camera, char *name, char *bodyType, char *orbiting, Vector2 pos, int fontsize, Vector2 textPos) {
+    double opacity = 255;
+    double threshold = 80;
+    double threshold2 = 20;
+    double minDistance = threshold;
+    double dx1, dx2, dy1, dy2, distance, distance1, distance2;
+
+    Vector2 textSize = MeasureTextEx(SpaceFont, name, fontsize, 1);
+    Vector2 textCenter = {textPos.x + textSize.x/2.0, textPos.y + textSize.y/2.0};
+
+    if (strcmp(bodyType, "moon") == 0) {
+        if (typeSelection[0] == true && strcmp(orbiting, mainPlanets[indexSelected].name) == 0) {
+            
+            dx1 = textCenter.x - 900;
+            dy1 = textCenter.y - 450;
+            distance1 = sqrtf(dx1*dx1+dy1*dy1);
+
+            dx2 = pos.x - 900;
+            dy2 = pos.y - 450;
+            distance2 = sqrtf(dx2*dx2+dy2*dy2);
+
+            distance = fmin(distance1, distance2);
+
+            opacity = (fmin(fmax(distance - threshold2, 0), threshold - threshold2) / (threshold - threshold2)) * 255;
+        } else {
+            opacity = 0;
+        }
+    } else if (strcmp(bodyType, "spacecraft") == 0) {
+        for (int i = 0; i < numPlanets; i++) {
+            Vector2 screenCordsPlanet = GetWorldToScreen(mainPlanets[i].drawPos, *camera);
+            dx1 = textCenter.x - screenCordsPlanet.x;
+            dy1 = textCenter.y - screenCordsPlanet.y;
+            distance1 = sqrtf(dx1*dx1+dy1*dy1);
+
+            dx2 = pos.x - screenCordsPlanet.x;
+            dy2 = pos.y - screenCordsPlanet.y;
+            distance2 = sqrtf(dx2*dx2+dy2*dy2);
+
+            distance = fmin(distance1, distance2);
+            minDistance = fmin(minDistance, distance);
+
+        } 
+
+        for (int i = 0; i < numSpacecraft; i++) {
+
+            if (strcmp(mainSpacecraft[i].name, name) == 0) break;
+
+            Vector2 screenCordsPlanet = GetWorldToScreen(mainSpacecraft[i].drawPos, *camera);
+            threshold = 60;
+            threshold2 = 15;
+
+            dx1 = textCenter.x - screenCordsPlanet.x;
+            dy1 = textCenter.y - screenCordsPlanet.y;
+            distance1 = sqrtf(dx1*dx1+dy1*dy1);
+
+            dx2 = pos.x - screenCordsPlanet.x;
+            dy2 = pos.y - screenCordsPlanet.y;
+            distance2 = sqrtf(dx2*dx2+dy2*dy2);
+
+            distance = fmin(distance1, distance2);
+            
+            distance = fmin(distance1, distance2);
+            minDistance = fmin(minDistance, distance);
+
+        }
+        opacity = fmin(opacity, (fmin(fmax(minDistance - threshold2, 0), threshold - threshold2) / (threshold - threshold2)) * 255);
+
+    } else if (strcmp(bodyType, "planet") == 0) {
+        
+        threshold = 40;
+        threshold2 = 10;
+        
+        for (int i = 0; i < numPlanets; i++) {
+
+            if (strcmp(mainPlanets[i].name, name) == 0) break;
+
+            Vector2 screenCordsPlanet = GetWorldToScreen(mainPlanets[i].drawPos, *camera);
+            
+
+            dx1 = textCenter.x - screenCordsPlanet.x;
+            dy1 = textCenter.y - screenCordsPlanet.y;
+            distance1 = sqrtf(dx1*dx1+dy1*dy1);
+
+            dx2 = pos.x - screenCordsPlanet.x;
+            dy2 = pos.y - screenCordsPlanet.y;
+            distance2 = sqrtf(dx2*dx2+dy2*dy2);
+
+            distance = fmin(distance1, distance2);
+            
+            distance = fmin(distance1, distance2);
+            minDistance = fmin(minDistance, distance);
+
+        }
+        threshold = 40;
+        threshold2 = 10;
+        
+        if (typeSelection[0]) {
+            for (int i = 0; i < numPlanets; i++) {
+
+                if (strcmp(mainPlanets[indexSelected].name, name) == 0) continue;
+
+                Vector2 screenCordsPlanet = GetWorldToScreen(mainPlanets[indexSelected].drawPos, *camera);
+                threshold = 40;
+                threshold2 = 10;
+
+                dx1 = textCenter.x - screenCordsPlanet.x;
+                dy1 = textCenter.y - screenCordsPlanet.y;
+                distance1 = sqrtf(dx1*dx1+dy1*dy1);
+
+                dx2 = pos.x - screenCordsPlanet.x;
+                dy2 = pos.y - screenCordsPlanet.y;
+                distance2 = sqrtf(dx2*dx2+dy2*dy2);
+
+                distance = fmin(distance1, distance2);
+                
+                distance = fmin(distance1, distance2);
+                minDistance = fmin(minDistance, distance);
+
+            }
+        }
+
+        opacity = fmin(opacity, (fmin(fmax(minDistance - threshold2, 0), threshold - threshold2) / (threshold - threshold2)) * 255);
+
+        bool selectedIShow = typeSelection[0] && strcmp(name, mainPlanets[indexSelected].name) == 0;
+        
+        if (selectedIShow) {
+            opacity = 255;
+        }
+
+    } else if (strcmp(bodyType, "minorBody") == 0) {
+        
+        threshold = 80;
+        threshold2 = 20;
+        
+        for (int i = 0; i < numPlanets; i++) {
+            Vector2 screenCordsPlanet = GetWorldToScreen(mainPlanets[i].drawPos, *camera);
+            dx1 = textCenter.x - screenCordsPlanet.x;
+            dy1 = textCenter.y - screenCordsPlanet.y;
+            distance1 = sqrtf(dx1*dx1+dy1*dy1);
+
+            dx2 = pos.x - screenCordsPlanet.x;
+            dy2 = pos.y - screenCordsPlanet.y;
+            distance2 = sqrtf(dx2*dx2+dy2*dy2);
+
+            distance = fmin(distance1, distance2);
+            minDistance = fmin(minDistance, distance);
+
+        } 
+
+        threshold = 60;
+        threshold2 = 15;
+
+        for (int i = 0; i < numMinorBodies; i++) {
+
+            if (strcmp(mainMinorBodies[i].name, name) == 0) break;
+
+            Vector2 screenCordsPlanet = GetWorldToScreen(mainMinorBodies[i].drawPos, *camera);
+
+            dx1 = textCenter.x - screenCordsPlanet.x;
+            dy1 = textCenter.y - screenCordsPlanet.y;
+            distance1 = sqrtf(dx1*dx1+dy1*dy1);
+
+            dx2 = pos.x - screenCordsPlanet.x;
+            dy2 = pos.y - screenCordsPlanet.y;
+            distance2 = sqrtf(dx2*dx2+dy2*dy2);
+
+            distance = fmin(distance1, distance2);
+            
+            distance = fmin(distance1, distance2);
+            minDistance = fmin(minDistance, distance);
+
+        }
+        opacity = fmin(opacity, (fmin(fmax(minDistance - threshold2, 0), threshold - threshold2) / (threshold - threshold2)) * 255);
+    }
+
+    return opacity;
+}
 void drawBody(Camera3D *camera, int fontsize, char *bodyType, int i) {
 
     Vector3 pos, radius;
@@ -16,6 +194,8 @@ void drawBody(Camera3D *camera, int fontsize, char *bodyType, int i) {
     double multiplier;
     Color color;
     char name[128];
+    char orbiting[128];
+
 
     if (!strcmp(bodyType, "planet")) {
         pos = mainPlanets[i].drawPos;
@@ -24,79 +204,59 @@ void drawBody(Camera3D *camera, int fontsize, char *bodyType, int i) {
         multiplier = 1.0;
         color = mainPlanets[i].color;
         strcpy(name, mainPlanets[i].name);
+        strcpy(orbiting, mainPlanets[i].bodyOrbiting);
+
     } else if (!strcmp(bodyType, "minorBody")) {
         pos = mainMinorBodies[i].drawPos;
         radius = mainMinorBodies[i].drawDimensions;
         rad = 4;
         multiplier = 0.5;
-        color = GRAY;   
+        color = BROWN;   
         strcpy(name, mainMinorBodies[i].name);
+        strcpy(orbiting, mainMinorBodies[i].bodyOrbiting);
+
     } else if (!strcmp(bodyType, "moon")) {
         pos = mainMoons[i].drawPos;
         radius = mainMoons[i].drawRadius;
-        rad = 2;
+        rad = 5;
         multiplier = 1.0;
         color = RED;
         strcpy(name, mainMoons[i].name);
+        strcpy(orbiting, mainMoons[i].bodyOrbiting);
+
     } else if (!strcmp(bodyType, "spacecraft")) {
         pos = mainSpacecraft[i].drawPos;
         radius = mainSpacecraft[i].drawDimensions;
         rad = 3;
         multiplier = 0.5;
-        color = DARKGRAY;
+        color = WHITE;
         strcpy(name, mainSpacecraft[i].name);
+        strcpy(orbiting, mainSpacecraft[i].bodyOrbiting);
     }
 
     Vector2 screenCordinates = (Vector2){GetWorldToScreen(pos, *camera).x, GetWorldToScreen(pos, *camera).y};
-    Vector2 screenPlanet;
-    double dx, dy, distance;
-    double opacity = 255;
-    bool draw = true;
-
-    if (!strcmp(bodyType, "moon")) { 
-        
-        char *orbiting = mainMoons[i].bodyOrbiting;
-        
-        for (int planet = 0; planet < numPlanets; planet++) {
-            if (!strcmp(mainPlanets[planet].name, orbiting)) {
-                screenPlanet = (Vector2){GetWorldToScreen(mainPlanets[planet].drawPos, *camera).x, GetWorldToScreen(mainPlanets[planet].drawPos, *camera).y};
-                break;
-            }
-        }
-        
-        dx = screenCordinates.x - screenPlanet.x;
-        dy = screenCordinates.y - screenPlanet.y;
-        distance = sqrt(dx*dx + dy*dy); 
-
-
-        if (distance < 20) draw = false;
-        if (distance < 40) opacity = ((distance - 20) / 20) * 255;
-
+    Vector2 textPos = {screenCordinates.x + fontsize/2.0, screenCordinates.y - fontsize/1.5};
     
-
-    }
+    EndMode3D();
     
+    double opacity = nameTagDrawCondtions(camera, name, bodyType, orbiting, screenCordinates, fontsize, textPos);
+    bool draw = opacity == 0 ? false:true;
+
     double distanceToObject = Vector3Distance(camera->position, pos);
     double projectedRadius = (radius.x*multiplier / (distanceToObject * tanf(camera->fovy * DEG2RAD / 2.0f))) * (GetScreenHeight() / 2.0f);
+    
     
     if (projectedRadius > rad) {
         draw = false;
     } 
-
-    
-    EndMode3D();
-    Vector2 textPos = {screenCordinates.x + fontsize/2.0, screenCordinates.y - fontsize/1.5};
     
     if (draw) {
-
         DrawTextEx(SpaceFont, name, textPos, fontsize, 1, (Color){color.r, color.g, color.b, opacity});
         DrawCircleLines(screenCordinates.x, screenCordinates.y, rad, (Color){color.r, color.g, color.b, opacity});
-        
     }
+
+    DrawCircle(screenCordinates.x, screenCordinates.y, projectedRadius, (Color){color.r, color.g, color.b, opacity});
     
-    BeginMode3D(*camera);
-    
-    DrawSphere(pos, radius.x*multiplier, (Color){color.r, color.g, color.b, opacity});
 }
 
 void drawCelestialBodies(Camera3D *camera) {

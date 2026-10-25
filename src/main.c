@@ -11,12 +11,10 @@
 #include "../src/camera/camera.h"
 #include "../src/input/input.h"
 
-
-
 #define SCREEN_HALF_X 900
 #define SCREEN_HALF_Y 450
-#define screenUnit_2_meter 1e7
-#define meter_2_screenUnit 1e-7
+#define screenUnit_2_meter 5e6
+#define meter_2_screenUnit 5e-6
 
 #define AU 1.496e+11 //in meters
 #define G 6.6743e-11
@@ -42,7 +40,6 @@ int main() {
     //system("python3 DATA/getData.py");
     targetFps = 100;
     SetTargetFPS(targetFps);
-
     InitWindow(1800, 900, "Kepler Dynamics 🪐");
     Model voyager = LoadModel("../assets/spacecraft/Juno.glb");
     
@@ -63,12 +60,9 @@ int main() {
     while (!WindowShouldClose()) {
         
         cameraLogic(&pov, &cameraPolar);
-        goToFocus(&pov, &cameraPolar);
         
         numbers_2_planets(&pov, &cameraPolar);
         clickOnBody(&pov, &cameraPolar);
-        
-
 
         //Drawing
         BeginDrawing();

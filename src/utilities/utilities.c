@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "../../src/body/body.h"
 #include "../../src/draw/draw.h"
+#include <math.h>
+#include <raylib.h>
 
 Font SpaceFont;
 Texture2D SunRaw, MercuryRaw, VenusRaw, EarthRaw, MarsRaw, JupiterRaw, SaturnRaw, SaturnRingsRaw, UranusRaw, NeptuneRaw, PlutoRaw;

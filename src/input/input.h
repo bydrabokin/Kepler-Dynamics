@@ -1,6 +1,6 @@
 #ifndef INPUT_H
 #define INPUT_H
-
+#include "../../src/camera/camera.h"
 
 extern bool typeSelection[4];
 extern int indexSelected;
