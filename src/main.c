@@ -13,8 +13,8 @@
 
 #define SCREEN_HALF_X 900
 #define SCREEN_HALF_Y 450
-#define screenUnit_2_meter 5e6
-#define meter_2_screenUnit 5e-6
+#define screenUnit_2_meter 1e7
+#define meter_2_screenUnit 1e-7
 
 #define AU 1.496e+11 //in meters
 #define G 6.6743e-11
@@ -75,6 +75,10 @@ int main() {
         EndMode3D();
 
         EndDrawing();
+
+        
+
+
 
     }
 

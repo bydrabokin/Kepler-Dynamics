@@ -17,6 +17,8 @@ typedef struct  {
     Texture2D textureRaw;
     Color color;
 
+    Model model;
+
 } Planet;
 
 

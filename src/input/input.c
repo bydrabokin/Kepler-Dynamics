@@ -95,7 +95,7 @@ void numbers_2_planets(Camera3D *camera,  PolarVector3 *cameraPolar) {
 }
 
 void clickOnBody(Camera3D *camera,  PolarVector3 *cameraPolar) {
-    
+    bool alreadySelected;
     
     for (int i = 0; i < numPlanets; i++) { 
         Vector2 screen = (Vector2){GetWorldToScreen(mainPlanets[i].drawPos, *camera).x, GetWorldToScreen(mainPlanets[i].drawPos, *camera).y};
@@ -105,8 +105,8 @@ void clickOnBody(Camera3D *camera,  PolarVector3 *cameraPolar) {
         double projectedRadius = (mainPlanets[i].drawRadius.x*0.5 / (distanceToObject * tanf(camera->fovy * DEG2RAD / 2.0f))) * (GetScreenHeight() / 2.0f);
         
         if (projectedRadius > radius) radius = projectedRadius;
-        
-        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && CheckCollisionPointCircle(GetMousePosition(), screen, radius)) {
+        alreadySelected = typeSelection[0] && indexSelected == i;
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && CheckCollisionPointCircle(GetMousePosition(), screen, radius) && !alreadySelected) {
             changeFocus(camera, cameraPolar, mainPlanets[i].drawPos, mainPlanets[i].drawRadius);
             indexSelected = i;
             typeSelection[0] = true;
@@ -125,8 +125,8 @@ void clickOnBody(Camera3D *camera,  PolarVector3 *cameraPolar) {
         double projectedRadius = (mainMoons[i].drawRadius.x*0.5 / (distanceToObject * tanf(camera->fovy * DEG2RAD / 2.0f))) * (GetScreenHeight() / 2.0f);
         
         if (projectedRadius > radius) radius = projectedRadius;
-
-        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && CheckCollisionPointCircle(GetMousePosition(), screen, radius)) {
+        alreadySelected = typeSelection[1] && indexSelected == i;
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && CheckCollisionPointCircle(GetMousePosition(), screen, radius) && !alreadySelected) {
             changeFocus(camera, cameraPolar, mainMinorBodies[i].drawPos, mainMinorBodies[i].drawDimensions);
             indexSelected = i;
             typeSelection[0] = false;
@@ -145,8 +145,8 @@ void clickOnBody(Camera3D *camera,  PolarVector3 *cameraPolar) {
         double projectedRadius = (mainMoons[i].drawRadius.x / (distanceToObject * tanf(camera->fovy * DEG2RAD / 2.0f))) * (GetScreenHeight() / 2.0f);
         
         if (projectedRadius > radius) radius = projectedRadius;
-        
-        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && CheckCollisionPointCircle(GetMousePosition(), screen, radius)) {
+        alreadySelected = typeSelection[2] && indexSelected == i;
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && CheckCollisionPointCircle(GetMousePosition(), screen, radius) && !alreadySelected) {
             changeFocus(camera, cameraPolar, mainMoons[i].drawPos, mainMoons[i].drawRadius);
             indexSelected = i;
             typeSelection[0] = false;
@@ -165,9 +165,8 @@ void clickOnBody(Camera3D *camera,  PolarVector3 *cameraPolar) {
         double projectedRadius = (mainSpacecraft[i].drawDimensions.x*0.5 / (distanceToObject * tanf(camera->fovy * DEG2RAD / 2.0f))) * (GetScreenHeight() / 2.0f);
         
         if (projectedRadius > radius) radius = projectedRadius;
-
-
-        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && CheckCollisionPointCircle(GetMousePosition(), screen, radius)) {
+        alreadySelected = typeSelection[3] && indexSelected == i;
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && CheckCollisionPointCircle(GetMousePosition(), screen, radius) && !alreadySelected) {
             changeFocus(camera, cameraPolar, mainSpacecraft[i].drawPos, mainSpacecraft[i].drawDimensions);
             indexSelected = i;
             typeSelection[0] = false;

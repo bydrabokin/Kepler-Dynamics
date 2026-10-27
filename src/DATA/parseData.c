@@ -22,6 +22,16 @@ void linkTextures() {
 
     for (int i = 0; i < numPlanets; i++) {
         mainPlanets[i].color = (Color)getaverageColor(mainPlanets[i].textureRaw);
+        Mesh mesh = GenMeshSphere(1.0f, 64, 64);
+
+        mainPlanets[i].model = LoadModelFromMesh(mesh);
+
+        Material *mat = &mainPlanets[i].model.materials[0];
+
+        mat->maps[MATERIAL_MAP_DIFFUSE].texture =
+            mainPlanets[i].textureRaw;
+
+        mat->maps[MATERIAL_MAP_DIFFUSE].color = WHITE;
     }
     
 }
@@ -144,8 +154,8 @@ void initData() {
                 .mean_temperature_K = mean_temperature_K->valuedouble,
                 .surface_pressure_Pa = surface_pressure_Pa->valuedouble,
                 
-                .pos = (Vector3){positionx->valuedouble, positiony->valuedouble, positionz->valuedouble},
-                .vel = (Vector3){velocityx->valuedouble, velocityy->valuedouble, velocityz->valuedouble},
+                .pos = (Vector3){positionx->valuedouble, positionz->valuedouble, positiony->valuedouble},
+                .vel = (Vector3){velocityx->valuedouble, velocityz->valuedouble, velocityy->valuedouble},
             };
 
             strcpy(bufferPlanet.code, body->string);
@@ -165,8 +175,8 @@ void initData() {
                 .mass = mass_kg->valuedouble,
                 .dimensions = (Vector3){dimensionsx->valuedouble, dimensionsy->valuedouble, dimensionsz->valuedouble},
                 
-                .pos = (Vector3){positionx->valuedouble, positiony->valuedouble, positionz->valuedouble},
-                .vel = (Vector3){velocityx->valuedouble, velocityy->valuedouble, velocityz->valuedouble},
+                .pos = (Vector3){positionx->valuedouble, positionz->valuedouble, positiony->valuedouble},
+                .vel = (Vector3){velocityx->valuedouble, velocityz->valuedouble, velocityy->valuedouble},
             };
 
             strcpy(bufferMinorBody.code, body->string);
@@ -186,8 +196,8 @@ void initData() {
 
                 .mean_solar_day_s = mean_solar_day_s->valuedouble,
 
-                .pos = (Vector3){positionx->valuedouble, positiony->valuedouble, positionz->valuedouble},
-                .vel = (Vector3){velocityx->valuedouble, velocityy->valuedouble, velocityz->valuedouble},
+                .pos = (Vector3){positionx->valuedouble, positionz->valuedouble, positiony->valuedouble},
+                .vel = (Vector3){velocityx->valuedouble, velocityz->valuedouble, velocityy->valuedouble},
             };
 
             strcpy(bufferMoon.code, body->string);
@@ -204,8 +214,8 @@ void initData() {
                 .mass = mass_kg->valuedouble,
                 .dimensions = (Vector3){dimensionsx->valuedouble, dimensionsy->valuedouble, dimensionsz->valuedouble},
                 
-                .pos = (Vector3){positionx->valuedouble, positiony->valuedouble, positionz->valuedouble},
-                .vel = (Vector3){velocityx->valuedouble, velocityy->valuedouble, velocityz->valuedouble},
+                .pos = (Vector3){positionx->valuedouble, positionz->valuedouble, positiony->valuedouble},
+                .vel = (Vector3){velocityx->valuedouble, velocityz->valuedouble, velocityy->valuedouble},
             };
 
             strcpy(bufferSpacecraft.code, body->string);
