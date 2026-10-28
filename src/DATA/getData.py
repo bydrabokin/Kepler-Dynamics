@@ -47,6 +47,8 @@ def name(planet, response):
 
     name = name.replace("Spacecraf", "Spacecraft")
     name = name.replace("Spacecraftt", "Spacecraft")
+    name = name.replace(" Spacecraft", "")
+
 
     return name
 

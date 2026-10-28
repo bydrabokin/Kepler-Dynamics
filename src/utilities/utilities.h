@@ -10,6 +10,7 @@ extern Texture2D CeresRaw, ErisRaw, MakemakeRaw, HaumeaRaw;
 extern Texture2D MoonRaw, PhobosRaw, IoRaw, EuropaRaw, GanymedeRaw, CallistoRaw;
 extern Texture2D MimasRaw, EnceladusRaw, TethysRaw, DioneRaw, RheaRaw, TitanRaw, IapetusRaw, PhoebeRaw;
 extern Texture2D CharonRaw;
+extern Texture2D defaultMoonRaw, defaultMinorBodyRaw;
 
 extern Model DawnGLB, JunoGLB, New_HorizonsGLB, Osiris_RexGLB, PioneerGLB, PSPGLB, VoyagerGLB;
 

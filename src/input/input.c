@@ -139,7 +139,7 @@ void clickOnBody(Camera3D *camera,  PolarVector3 *cameraPolar) {
 
     for (int i = 0; i < numMoons; i++) { 
         Vector2 screen = (Vector2){GetWorldToScreen(mainMoons[i].drawPos, *camera).x, GetWorldToScreen(mainMoons[i].drawPos, *camera).y};
-        double radius = 2;
+        double radius = 5;
         
         double distanceToObject = Vector3Distance(camera->position, mainMoons[i].drawPos);
         double projectedRadius = (mainMoons[i].drawRadius.x / (distanceToObject * tanf(camera->fovy * DEG2RAD / 2.0f))) * (GetScreenHeight() / 2.0f);
@@ -171,8 +171,8 @@ void clickOnBody(Camera3D *camera,  PolarVector3 *cameraPolar) {
             indexSelected = i;
             typeSelection[0] = false;
             typeSelection[1] = false;
-            typeSelection[2] = true;
-            typeSelection[3] = false;
+            typeSelection[2] = false;
+            typeSelection[3] = true;
 
         }
     }

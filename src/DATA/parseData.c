@@ -28,12 +28,58 @@ void linkTextures() {
 
         Material *mat = &mainPlanets[i].model.materials[0];
 
-        mat->maps[MATERIAL_MAP_DIFFUSE].texture =
-            mainPlanets[i].textureRaw;
+        mat->maps[MATERIAL_MAP_DIFFUSE].texture = mainPlanets[i].textureRaw;
 
         mat->maps[MATERIAL_MAP_DIFFUSE].color = WHITE;
     }
-    
+
+    for (int i = 0; i < numMoons; i++) {
+        char *name = mainMoons[i].name;
+        if (!strcmp(name, "Moon")) mainMoons[i].textureRaw = MoonRaw;
+        else if (!strcmp(name, "Phobos")) mainMoons[i].textureRaw = PhobosRaw;
+        else if (!strcmp(name, "Io")) mainMoons[i].textureRaw = IoRaw;
+        else if (!strcmp(name, "Europa")) mainMoons[i].textureRaw = EuropaRaw;
+        else if (!strcmp(name, "Ganymede")) mainMoons[i].textureRaw = GanymedeRaw;
+        else if (!strcmp(name, "Callisto")) mainMoons[i].textureRaw = CallistoRaw;
+        else if (!strcmp(name, "Mimas")) mainMoons[i].textureRaw = MimasRaw;
+        else if (!strcmp(name, "Enceladus")) mainMoons[i].textureRaw = EnceladusRaw;
+        else if (!strcmp(name, "Tethys")) mainMoons[i].textureRaw = TethysRaw;
+        else if (!strcmp(name, "Dione")) mainMoons[i].textureRaw = DioneRaw;
+        else if (!strcmp(name, "Rhea")) mainMoons[i].textureRaw = RheaRaw;
+        else if (!strcmp(name, "Titan")) mainMoons[i].textureRaw = TitanRaw;
+        else if (!strcmp(name, "Iapetus")) mainMoons[i].textureRaw = IapetusRaw;
+        else if (!strcmp(name, "Phoebe")) mainMoons[i].textureRaw = PhobosRaw;
+        else if (!strcmp(name, "Charon")) mainMoons[i].textureRaw = CharonRaw;
+        else mainMoons[i].textureRaw = defaultMoonRaw;
+
+        mainMoons[i].color = (Color)getaverageColor(mainMoons[i].textureRaw);
+        Mesh mesh = GenMeshSphere(1.0f, 64, 64);
+        mainMoons[i].model = LoadModelFromMesh(mesh);
+        Material *mat = &mainMoons[i].model.materials[0];
+        mat->maps[MATERIAL_MAP_DIFFUSE].texture = mainMoons[i].textureRaw;
+        
+        mat->maps[MATERIAL_MAP_DIFFUSE].color = WHITE;
+    }
+
+    for (int i = 0; i < numMinorBodies; i++) {
+        char *name = mainMinorBodies[i].name;
+        printf("%s: ID=%u, Width=%d, Height=%d, Format=%d\n", name, mainMinorBodies[i].textureRaw.id, mainMinorBodies[i].textureRaw.width, mainMinorBodies[i].textureRaw.height, mainMinorBodies[i].textureRaw.format);
+        if (!strcmp(name, "Ceres")) mainMinorBodies[i].textureRaw = CeresRaw;
+        else if (!strcmp(name, "Eris")) mainMinorBodies[i].textureRaw = ErisRaw;
+        else if (!strcmp(name, "Haumea")) mainMinorBodies[i].textureRaw = HaumeaRaw;
+        else if (!strcmp(name, "Makemake")) mainMinorBodies[i].textureRaw = MakemakeRaw;
+        else mainMinorBodies[i].textureRaw = defaultMinorBodyRaw;
+
+        mainMinorBodies[i].color = (Color)getaverageColor(mainMinorBodies[i].textureRaw);
+        Mesh mesh = GenMeshSphere(1.0f, 64, 64);
+        mainMinorBodies[i].model = LoadModelFromMesh(mesh);
+        Material *mat = &mainMinorBodies[i].model.materials[0];
+        mat->maps[MATERIAL_MAP_DIFFUSE].texture = mainMinorBodies[i].textureRaw;
+        
+        mat->maps[MATERIAL_MAP_DIFFUSE].color = WHITE;
+    }
+
+
 }
 
 void readFile(char **wholeJsonStr) {

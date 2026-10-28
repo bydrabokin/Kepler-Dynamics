@@ -19,9 +19,10 @@ double nameTagDrawCondtions(Camera3D *camera, char *name, char *bodyType, char *
 
     Vector2 textSize = MeasureTextEx(SpaceFont, name, fontsize, 1);
     Vector2 textCenter = {textPos.x + textSize.x/2.0, textPos.y + textSize.y/2.0};
+    Vector2 screenCordsPlanet;
 
     if (strcmp(bodyType, "moon") == 0) {
-        if ((typeSelection[0] && strcmp(orbiting, mainPlanets[indexSelected].name) || (typeSelection[2] && strcmp(orbiting, mainMoons[indexSelected].bodyOrbiting))) == 0) {
+        if ((typeSelection[0] && strcmp(orbiting, mainPlanets[indexSelected].name) == 0) || (typeSelection[2] && strcmp(orbiting, mainMoons[indexSelected].bodyOrbiting) == 0)) {
             
             dx1 = textCenter.x - 900;
             dy1 = textCenter.y - 450;
@@ -34,12 +35,17 @@ double nameTagDrawCondtions(Camera3D *camera, char *name, char *bodyType, char *
             distance = fmin(distance1, distance2);
 
             opacity = (fmin(fmax(distance - threshold2, 0), threshold - threshold2) / (threshold - threshold2)) * 255;
+
+            if (typeSelection[2] && !strcmp(mainMoons[indexSelected].name, name)) {
+                opacity = 255;
+            }
+
         } else {
             opacity = 0;
         }
     } else if (strcmp(bodyType, "spacecraft") == 0) {
         for (int i = 0; i < numPlanets; i++) {
-            Vector2 screenCordsPlanet = GetWorldToScreen(mainPlanets[i].drawPos, *camera);
+            screenCordsPlanet = GetWorldToScreen(mainPlanets[i].drawPos, *camera);
             dx1 = textCenter.x - screenCordsPlanet.x;
             dy1 = textCenter.y - screenCordsPlanet.y;
             distance1 = sqrtf(dx1*dx1+dy1*dy1);
@@ -57,7 +63,7 @@ double nameTagDrawCondtions(Camera3D *camera, char *name, char *bodyType, char *
 
             if (strcmp(mainSpacecraft[i].name, name) == 0) break;
 
-            Vector2 screenCordsPlanet = GetWorldToScreen(mainSpacecraft[i].drawPos, *camera);
+            screenCordsPlanet = GetWorldToScreen(mainSpacecraft[i].drawPos, *camera);
             threshold = 60;
             threshold2 = 15;
 
@@ -86,8 +92,7 @@ double nameTagDrawCondtions(Camera3D *camera, char *name, char *bodyType, char *
 
             if (strcmp(mainPlanets[i].name, name) == 0) break;
 
-            Vector2 screenCordsPlanet = GetWorldToScreen(mainPlanets[i].drawPos, *camera);
-            
+            screenCordsPlanet = GetWorldToScreen(mainPlanets[i].drawPos, *camera);
 
             dx1 = textCenter.x - screenCordsPlanet.x;
             dy1 = textCenter.y - screenCordsPlanet.y;
@@ -256,8 +261,7 @@ void drawBody2D(Camera3D *camera, int fontsize, char *bodyType, int i) {
         DrawCircleLines(screenCordinates.x, screenCordinates.y, rad, (Color){color.r, color.g, color.b, opacity});
     }
     
-    DrawCircle(screenCordinates.x, screenCordinates.y, projectedRadius, (Color){color.r, color.g, color.b, opacity});
-
+    //DrawCircle(screenCordinates.x, screenCordinates.y, projectedRadius, (Color){color.r, color.g, color.b, opacity});
     
 }
 
@@ -317,7 +321,11 @@ void drawBody3D(Camera3D *camera, int fontsize, char *bodyType, int i) {
 
     if (!strcmp(bodyType, "planet")) {
         DrawModelEx(mainPlanets[i].model, (Vector3)pos, (Vector3){ 1.0f, 0.0f, 0.0f }, 90.0f, mainPlanets[i].drawRadius, WHITE);
-    } 
+    } else if (!strcmp(bodyType, "moon")) {
+        DrawModelEx(mainMoons[i].model, (Vector3)pos, (Vector3){ 1.0f, 0.0f, 0.0f }, 90.0f, mainMoons[i].drawRadius, WHITE);
+    }  else if (!strcmp(bodyType, "minorBody")) {
+        DrawModelEx(mainMinorBodies[i].model, (Vector3)pos, (Vector3){ 1.0f, 0.0f, 0.0f }, 90.0f, (Vector3){mainMinorBodies[i].drawDimensions.x * multiplier, mainMinorBodies[i].drawDimensions.y * multiplier, mainMinorBodies[i].drawDimensions.z * multiplier }, WHITE);
+    }
 }
 
 

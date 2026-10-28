@@ -12,8 +12,12 @@ Texture2D CeresRaw, ErisRaw, MakemakeRaw, HaumeaRaw;
 Texture2D MoonRaw, PhobosRaw, IoRaw, EuropaRaw, GanymedeRaw, CallistoRaw;
 Texture2D MimasRaw, EnceladusRaw, TethysRaw, DioneRaw, RheaRaw, TitanRaw, IapetusRaw, PhoebeRaw;
 Texture2D CharonRaw;
+Texture2D defaultMoonRaw, defaultMinorBodyRaw;
+
 
 Model DawnGLB, JunoGLB, New_HorizonsGLB, Osiris_RexGLB, PioneerGLB, PSPGLB, VoyagerGLB;
+
+
 
 void doItwithAllDifferent(void (*functionPlanets)(), void (*functionMinorBodies)(), void (*functionMoons)(), void (*functionSpacecraft)()) {
     int celestialNum = numPlanets + numMinorBodies + numMoons + numSpacecraft;
@@ -42,7 +46,6 @@ void doItwithAllDifferent(void (*functionPlanets)(), void (*functionMinorBodies)
 
     }
 }
-
 
 void doItwithAllSame(void (*function)()) {
     int celestialNum = numPlanets + numMinorBodies + numMoons + numSpacecraft;
@@ -106,6 +109,8 @@ void loadMinorBodies() {
     ErisRaw = LoadTexture("../assets/minorBodies/eris.png");
     MakemakeRaw = LoadTexture("../assets/minorBodies/makemake.png");
     HaumeaRaw = LoadTexture("../assets/minorBodies/haumea.png");
+    defaultMinorBodyRaw = LoadTexture("../assets/minorBodies/defaultMinorBody.png");
+
 
 }
 
@@ -126,6 +131,7 @@ void loadMoons() {
     IapetusRaw = LoadTexture("../assets/moons/iapetus.png");
     PhoebeRaw = LoadTexture("../assets/moons/phoebe.png");
     CharonRaw = LoadTexture("../assets/moons/charon.png");
+    defaultMoonRaw = LoadTexture("../assets/moons/defaultMoon.png");
 }
 
 void loadSpacecraft() {

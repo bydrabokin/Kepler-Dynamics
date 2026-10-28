@@ -33,6 +33,10 @@ typedef struct  {
     char type[128];
     char bodyOrbiting[128];
 
+    Texture2D textureRaw;
+    Color color;
+
+    Model model;
 
 } MinorBody;
 
@@ -48,7 +52,10 @@ typedef struct  {
     char type[128];
     char bodyOrbiting[128];
 
+    Texture2D textureRaw;
+    Color color;
 
+    Model model;
 
 } Moon;
 
@@ -62,6 +69,9 @@ typedef struct  {
     char name[128];
     char type[128];
     char bodyOrbiting[128];
+
+    Texture2D textureRaw;
+    Color color;
 
 } Spacecraft;
 
