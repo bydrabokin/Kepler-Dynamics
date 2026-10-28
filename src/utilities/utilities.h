@@ -14,6 +14,9 @@ extern Texture2D defaultMoonRaw, defaultMinorBodyRaw;
 
 extern Model DawnGLB, JunoGLB, New_HorizonsGLB, Osiris_RexGLB, PioneerGLB, PSPGLB, VoyagerGLB;
 
+extern int framesticked;
+extern Vector2 middle;
+
 void doItwithAllDifferent(void (*functionPlanets)(), void (*functionMinorBodies)(), void (*functionMoons)(), void (*functionSpacecraft)());
 void doItwithAllSame(void (*function)());
 

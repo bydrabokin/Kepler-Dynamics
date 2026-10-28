@@ -17,6 +17,8 @@ Texture2D defaultMoonRaw, defaultMinorBodyRaw;
 
 Model DawnGLB, JunoGLB, New_HorizonsGLB, Osiris_RexGLB, PioneerGLB, PSPGLB, VoyagerGLB;
 
+int framesticked = 0;
+Vector2 middle = {900, 450};
 
 
 void doItwithAllDifferent(void (*functionPlanets)(), void (*functionMinorBodies)(), void (*functionMoons)(), void (*functionSpacecraft)()) {
@@ -145,6 +147,8 @@ void loadSpacecraft() {
 }
 
 void loadFiles() {
+
+    DrawTextEx(SpaceFont, "Loading Assets...", middle, 30, 1, WHITE);
     loadFont();
     loadPlanets();
     loadMinorBodies();

@@ -324,7 +324,7 @@ void drawBody3D(Camera3D *camera, int fontsize, char *bodyType, int i) {
     } else if (!strcmp(bodyType, "moon")) {
         DrawModelEx(mainMoons[i].model, (Vector3)pos, (Vector3){ 1.0f, 0.0f, 0.0f }, 90.0f, mainMoons[i].drawRadius, WHITE);
     }  else if (!strcmp(bodyType, "minorBody")) {
-        DrawModelEx(mainMinorBodies[i].model, (Vector3)pos, (Vector3){ 1.0f, 0.0f, 0.0f }, 90.0f, (Vector3){mainMinorBodies[i].drawDimensions.x * multiplier, mainMinorBodies[i].drawDimensions.y * multiplier, mainMinorBodies[i].drawDimensions.z * multiplier }, WHITE);
+        DrawModelEx(mainMinorBodies[i].model, (Vector3)pos, (Vector3){ 1.0f, 0.0f, 0.0f }, 90.0f, (Vector3){mainMinorBodies[i].drawDimensions.x * multiplier, mainMinorBodies[i].drawDimensions.y * multiplier, mainMinorBodies[i].drawDimensions.z * multiplier}, WHITE);
     }
 }
 
