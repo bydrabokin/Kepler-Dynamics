@@ -15,10 +15,12 @@ Texture2D CharonRaw;
 Texture2D defaultMoonRaw, defaultMinorBodyRaw;
 Texture2D BackgroundRaw;
 
-Model DawnGLB, JunoGLB, New_HorizonsGLB, Osiris_RexGLB, PioneerGLB, PSPGLB, VoyagerGLB;
+Model DawnGLB, EuropaClipperGLB, HubbleGLB, JamesWebbGLB, JunoGLB, New_HorizonsGLB, Osiris_RexGLB, PioneerGLB, VoyagerGLB;
+Model JUICEGLB, LucyGLB, ParkerSolarProbeGLB, PsycheGLB;
 
 int framesticked = 0;
 Vector2 middle = {900, 450};
+
 
 
 void doItwithAllDifferent(void (*functionPlanets)(), void (*functionMinorBodies)(), void (*functionMoons)(), void (*functionSpacecraft)()) {
@@ -138,11 +140,17 @@ void loadMoons() {
 
 void loadSpacecraft() {
     DawnGLB = LoadModel("../assets/spacecraft/Dawn.glb");
+    EuropaClipperGLB = LoadModel("../assets/spacecraft/Europa Cliper.glb");
+    HubbleGLB = LoadModel("../assets/spacecraft/Hubble.glb");
+    JamesWebbGLB = LoadModel("../assets/spacecraft/James Webb.glb");
+    JUICEGLB = LoadModel("../assets/spacecraft/JUICE.glb");
     JunoGLB = LoadModel("../assets/spacecraft/Juno.glb");
-    New_HorizonsGLB = LoadModel("../assets/spacecraft/New_Horizons.glb");
-    Osiris_RexGLB = LoadModel("../assets/spacecraft/Osiris_Rex.glb");
+    LucyGLB= LoadModel("../assets/spacecraft/Lucy.glb");
+    New_HorizonsGLB = LoadModel("../assets/spacecraft/New Horizons.glb");
+    Osiris_RexGLB = LoadModel("../assets/spacecraft/OSIRIS-REx.glb");
+    ParkerSolarProbeGLB= LoadModel("../assets/spacecraft/Parker Solar Probe.glb");
     PioneerGLB = LoadModel("../assets/spacecraft/Pioneer.glb");
-    PSPGLB = LoadModel("../assets/spacecraft/PSP.glb");
+    PsycheGLB = LoadModel("../assets/spacecraft/Psyche.glb");
     VoyagerGLB = LoadModel("../assets/spacecraft/Voyager.glb");
 }
 

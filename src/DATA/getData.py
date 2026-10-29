@@ -352,7 +352,9 @@ listSpacecraft = [
     ["-121", 4100, [30.0, 6.3, 3.9]],     # BepiColombo Spacecraft    
     ["-37", 609, [1.6, 1.3, 1.0]],        # Hayabusa2 Spacecraft   
     ["-239", 4480, [9.0, 5.3, 4.5]],      # Martian Moons eXploration Spacecraft
-    ["-170", 6200, [14.2, 21.2, 8.0]]     # James Webb Space Telescope
+    ["-170", 6200, [14.2, 21.2, 8.0]],    # James Webb Space Telescope
+    ["-48", 12200, [13.2, 4.2, 4.2]]      # Hubble Space Telescope
+
 
 
 ]

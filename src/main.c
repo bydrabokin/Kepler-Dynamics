@@ -98,7 +98,7 @@ int main() {
 
         EndDrawing();
 
-        printf("CAMERA: (x: %f, y: %f, z: %f) r: %f, theta: %f, psi: %f Center: (x: %f, y: %f, z: %f)\n", pov.position.x, pov.position.y, pov.position.z, cameraPolar.r, cameraPolar.θ, cameraPolar.φ, pov.target.x, pov.target.y, pov.target.z);
+        //printf("CAMERA: (x: %f, y: %f, z: %f) r: %f, theta: %f, psi: %f Center: (x: %f, y: %f, z: %f)\n", pov.position.x, pov.position.y, pov.position.z, cameraPolar.r, cameraPolar.θ, cameraPolar.φ, pov.target.x, pov.target.y, pov.target.z);
         framesticked++;
     }
 
