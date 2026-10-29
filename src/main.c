@@ -47,7 +47,7 @@ int main() {
     
     //set
     initData();
-    linkTextures(mainPlanets, numPlanets);
+    loadExtra();
     doItwithAllSame(setDrawCordinates);
     setIntialCamera(&pov, &cameraPolar);
     
@@ -64,17 +64,41 @@ int main() {
         BeginDrawing();
         ClearBackground(BLACK);
 
-        if (framesticked == 0) loadFiles();
+        
+        
+        if (framesticked <= 5) {
+            DrawTexturePro(BackgroundRaw, (Rectangle){0, 0, BackgroundRaw.width, BackgroundRaw.height}, (Rectangle){0, 0, 1800, 900}, (Vector2){0, 0}, 0, WHITE);            
+            printf("background\n");
+        }
+
+        if (framesticked == 0) {
+            loadFont();
+            DrawTextEx(SpaceFont, "Loading Planets...", (Vector2){middle.x - 200, middle.y - 50}, 45, 1, WHITE);
+        } else if (framesticked == 1) {
+            loadPlanets();
+            DrawTextEx(SpaceFont, "Loading Moons...", (Vector2){middle.x - 200, middle.y - 50}, 45, 1, WHITE);
+        } else if (framesticked == 2) {
+            loadMoons();
+            DrawTextEx(SpaceFont, "Loading Minor Bodies...", (Vector2){middle.x - 200, middle.y - 50}, 45, 1, WHITE);
+        } else if (framesticked == 3) {
+            loadMinorBodies();
+            DrawTextEx(SpaceFont, "Loading Spacecraft...", (Vector2){middle.x - 200, middle.y - 50}, 45, 1, WHITE);
+        } else if (framesticked == 4) {
+            loadSpacecraft();
+            DrawTextEx(SpaceFont, "Linking Textures...", (Vector2){middle.x - 200, middle.y - 50}, 45, 1, WHITE);
+        } else if (framesticked == 5) {
+            linkTextures();
+        }
 
         BeginMode3D(pov);   
-
-        drawCelestialBodies(&pov);
+        
+        if (framesticked > 5) drawCelestialBodies(&pov);
 
         EndMode3D();
 
         EndDrawing();
 
-        //printf("CAMERA: (x: %f, y: %f, z: %f) r: %f, theta: %f, psi: %f Center: (x: %f, y: %f, z: %f)\n", pov.position.x, pov.position.y, pov.position.z, cameraPolar.r, cameraPolar.θ, cameraPolar.φ, pov.target.x, pov.target.y, pov.target.z);
+        printf("CAMERA: (x: %f, y: %f, z: %f) r: %f, theta: %f, psi: %f Center: (x: %f, y: %f, z: %f)\n", pov.position.x, pov.position.y, pov.position.z, cameraPolar.r, cameraPolar.θ, cameraPolar.φ, pov.target.x, pov.target.y, pov.target.z);
         framesticked++;
     }
 

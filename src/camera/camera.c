@@ -6,9 +6,6 @@
 #include "raymath.h"
 #include <stdio.h>
 
-
-
-
 Vector3 focus = {0, 0, 0};
 Vector3 radius = {0, 0, 0};
 

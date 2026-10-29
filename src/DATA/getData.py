@@ -25,8 +25,10 @@ def name(planet, response):
         name = name[:name.find("/")].strip()
 
 
-    if name.lower().count("spacecraft")>0:
-        name = name[:name.lower().find("Spacecraft")]
+    if name.lower().count("space")>0:
+        name = name[:name.lower().find("space")]
+
+    
 
     if name.count("(") > 0:
         name = name[:name.find("(")]
@@ -64,6 +66,8 @@ def centerBody(planet, response):
         centerBody = ""
     if centerBody.count("(") > 0:
         centerBody = centerBody[1:]
+    if len(centerBody) > 0 and centerBody[0] == "E" and centerBody != "Earth":
+        centerBody = "Sun"
 
     return centerBody
 
@@ -347,7 +351,8 @@ listSpacecraft = [
     ["-255", 2747, [24.76, 7.34, 4.9]],   # Psyche Spacecraft         
     ["-121", 4100, [30.0, 6.3, 3.9]],     # BepiColombo Spacecraft    
     ["-37", 609, [1.6, 1.3, 1.0]],        # Hayabusa2 Spacecraft   
-    ["-239", 4480, [9.0, 5.3, 4.5]]       # Martian Moons eXploration Spacecraft
+    ["-239", 4480, [9.0, 5.3, 4.5]],      # Martian Moons eXploration Spacecraft
+    ["-170", 6200, [14.2, 21.2, 8.0]]     # James Webb Space Telescope
 
 
 ]

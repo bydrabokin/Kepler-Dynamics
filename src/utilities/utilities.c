@@ -13,7 +13,7 @@ Texture2D MoonRaw, PhobosRaw, IoRaw, EuropaRaw, GanymedeRaw, CallistoRaw;
 Texture2D MimasRaw, EnceladusRaw, TethysRaw, DioneRaw, RheaRaw, TitanRaw, IapetusRaw, PhoebeRaw;
 Texture2D CharonRaw;
 Texture2D defaultMoonRaw, defaultMinorBodyRaw;
-
+Texture2D BackgroundRaw;
 
 Model DawnGLB, JunoGLB, New_HorizonsGLB, Osiris_RexGLB, PioneerGLB, PSPGLB, VoyagerGLB;
 
@@ -146,9 +146,11 @@ void loadSpacecraft() {
     VoyagerGLB = LoadModel("../assets/spacecraft/Voyager.glb");
 }
 
-void loadFiles() {
+void loadExtra() {
+    BackgroundRaw = LoadTexture("../assets/extra/background.png");
+}
 
-    DrawTextEx(SpaceFont, "Loading Assets...", middle, 30, 1, WHITE);
+void loadFiles() {
     loadFont();
     loadPlanets();
     loadMinorBodies();
